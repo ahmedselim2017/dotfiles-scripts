@@ -1,0 +1,2 @@
+#!/bin/bash
+$(xrandr --output eDP-1 --brightness $(bc <<< $(xrandr --verbose | grep -m 1 -i brightness | cut -f2 -d ' ')' - 0.05'))

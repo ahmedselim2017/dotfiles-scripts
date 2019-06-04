@@ -1,0 +1,59 @@
+!Font
+URxvt.font: xft:monospace:size=10:style=Regular:antialias=true
+URxvt.boldFont: xft:monospace:size=10:style=Bold:antialias=true
+!URxvt.font: xft:RobotoMono-Regular:size=11:style=Regular:antialias=true
+!URxvt.boldFont: xft:RobotoMono-Bold:size=11:style=Bold:antialias=true
+URxvt.letterSpace: -0.5
+
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+
+
+
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
+!Internal border
+URxvt*internalBorder: 24
+
+!Some other stuff
+URxvt.scrollBar: false
+URxvt.scrollTtyOutput: false
+URxvt.scrollWithBuffer: true
+URcvt.scrollTtyKeypress: true
+
+!aab2bf
+!Colors
+!URxvt.background: rgba:1234/2222/1234/3500
+URxvt.transparent: true
+URxvt.foreground: #cbcdd2
+URxvt.cursorColor: #d6d8db
+URxvt.shading: 35
+URxvt.highlightColor: #bdbdbd
+URxvt.highlighTextColor: #424242
+!URxvt.depth: 32
+
+!Black
+URxvt.color0: #151515
+URxvt.color8: #505050
+!Red
+URxvt.color1: #ac4142
+URxvt.color9: #ac6667
+!Green
+URxvt.color2: #89a840
+URxvt.color10: #91a863
+!Yellow
+URxvt.color3: #f5b85d
+Urxvt.color11: #f5cd90
+!Blue
+URxvt.color4: #4597b5
+URxvt.color12: #6a9fb5
+!Magenta
+URxvt.color5: #ab5298
+URxvt.color13: #aa759f
+!Cyan
+URxvt.color6: #45b5a0
+URxvt.color14: #75b5aa
+!White
+URxvt.color7: #b9b9b9
+URxvt.color15: #f5f5f5
