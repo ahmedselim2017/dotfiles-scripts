@@ -126,7 +126,4 @@ set incsearch
 set ignorecase
 set smartcase
 
-"=========
-" Plugins
-"=========
 
