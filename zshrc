@@ -98,9 +98,27 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
+
+
+# Configs
 alias i3config="vim ~/dotfiles/i3/config"
 alias zshconfig="vim ~/dotfiles/zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias resetZSHSource="source ~/.zshrc"
+
+# Some Commands
 alias cls="command clear"
+alias rf="rm -rf"
+
+# Git
+alias gs="git status"
+alias gaa="git add -A"
+alias gad="git add ."
+alias gpm="git push origin master"
+alias gc="git commit -m"
+alias gac="git commit -am"
+
+#Executable Files
+alias gdrive="~/.gDrive"
+
 
