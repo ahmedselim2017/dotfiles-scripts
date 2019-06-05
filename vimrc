@@ -126,4 +126,8 @@ set incsearch
 set ignorecase
 set smartcase
 
+" Plugins
+call plug#begin('~/.vim/plugged')
+Plug 'klen/python-mode'
+call plug#end()
 
