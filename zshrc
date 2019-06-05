@@ -119,6 +119,6 @@ alias gc="git commit -m"
 alias gac="git commit -am"
 
 #Executable Files
-alias gdrive="~/.gDrive"
+alias gdrive="~/gDrive"
 
 
