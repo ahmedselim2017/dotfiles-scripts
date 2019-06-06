@@ -66,6 +66,8 @@ alias smkd="sudo mkdir -pv"
 alias sa="sudo apt"
 alias sai="sudo apt install"
 alias sau="sudo apt update && sudo apt upgrade"
+alias ac="apt-cache"
+alias acs="apt-cache search"
 
 # Python
 alias py="python"
