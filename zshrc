@@ -56,10 +56,12 @@ alias resetZSHSource="source ~/.zshrc"
 # Some Commands
 alias cls="command clear"
 alias rf="rm -rf"
+alias s="sudo"
 alias v="vim"
 alias sv="sudo vim"
 alias mkd="mkdir -pv"
 alias smkd="sudo mkdir -pv"
+
 # Apt
 alias sa="sudo apt"
 alias sai="sudo apt install"
