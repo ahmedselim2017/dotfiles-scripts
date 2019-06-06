@@ -68,7 +68,7 @@ set pastetoggle=<F2>
 set clipboard=unnamedplus
 
 " Remap <Leader> key
-let mapleader=" "
+let mapleader=","
 
 " Easier moving between tabs
 noremap <leader>1 1gt
