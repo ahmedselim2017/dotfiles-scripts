@@ -126,8 +126,22 @@ set incsearch
 set ignorecase
 set smartcase
 
+
+" Autoclose
+inoremap <Leader>( ()
+inoremap <Leader>{ {}
+inoremap <Leader>[ []
+inoremap <Leader>" ""
+inoremap <Leader>' ''
+inoremap <Leader>` ``
+
+
 " Plugins
 call plug#begin('~/.vim/plugged')
+
 Plug 'klen/python-mode'
+set completeopt=longest,menuone
+
+
 call plug#end()
 
