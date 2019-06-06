@@ -142,6 +142,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'klen/python-mode'
 set completeopt=longest,menuone
 
+Plug 'szymonmaszke/vimpyter'
 
 call plug#end()
 
