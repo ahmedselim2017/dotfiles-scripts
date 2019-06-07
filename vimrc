@@ -114,7 +114,7 @@ highlight ColorColumn ctermbg=1
 " Useful things
 set history=700
 set undolevels=700
-noremap nn :noh<CR>
+noremap nN :noh<CR>
 
 " Tabs
 set tabstop=4
