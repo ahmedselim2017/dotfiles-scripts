@@ -56,7 +56,7 @@ alias resetZSHSource="source ~/.zshrc"
 # Some Commands
 alias cls="command clear"
 alias rf="rm -rf"
-alias s="sudo"
+alias s="sudo "
 alias v="vim"
 alias sv="sudo vim"
 alias mkd="mkdir -pv"

@@ -71,16 +71,18 @@ set clipboard=unnamedplus
 let mapleader=","
 
 " Easier moving between tabs
-noremap <leader>1 1gt
-noremap <leader>2 2gt
-noremap <leader>3 3gt
-noremap <leader>4 4gt
-noremap <leader>5 5gt
-noremap <leader>6 6gt
-noremap <leader>7 7gt
-noremap <leader>8 8gt
-noremap <leader>9 9gt
-noremap <leader>0 :tablast<CR>
+noremap <Leader>1 1gt
+noremap <Leader>2 2gt
+noremap <Leader>3 3gt
+noremap <Leader>4 4gt
+noremap <Leader>5 5gt
+noremap <Leader>6 6gt
+noremap <Leader>7 7gt
+noremap <Leader>8 8gt
+noremap <Leader>9 9gt
+noremap <Leader>0 :tablast<CR>
+noremap <Leader>t :tabnew<CR>
+noremap <Leader>c :tabclose<CR>
 
 " Easily moving between split windows
 map <c-j> <c-w>j
@@ -88,9 +90,9 @@ map <c-k> <c-k>k
 map <c-h> <c-w>h
 map <c-l> <c-w>l
 
+
 " Easily sorting code
 vnoremap <Leader>s :sort<CR>
-
 
 " Easier moving code
 vnoremap < <gv
@@ -107,11 +109,12 @@ set tw=79          " width of the document(used by gd)
 set nowrap         " don't automatically wrap on lad
 set fo -=t         " don't automatically wrap text when typing
 set colorcolumn=80
-highlight ColorColumn ctermbg=0 
+highlight ColorColumn ctermbg=1
 
 " Useful things
 set history=700
 set undolevels=700
+noremap nn :noh<CR>
 
 " Tabs
 set tabstop=4
@@ -126,6 +129,8 @@ set incsearch
 set ignorecase
 set smartcase
 
+" Visial mode shortcuts
+noremap vv ve
 
 " Autoclose
 inoremap <Leader>( ()
@@ -134,6 +139,9 @@ inoremap <Leader>[ []
 inoremap <Leader>" ""
 inoremap <Leader>' ''
 inoremap <Leader>` ``
+
+" Saving as root
+cabbrev W w !sudo tee %
 
 
 " Plugins
