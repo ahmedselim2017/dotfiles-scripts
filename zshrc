@@ -33,7 +33,6 @@ HIST_STAMPS="dd/mm/yyyy"
 
 plugins=(
     git
-    sudo
     vi-mode    
 )
 
