@@ -93,6 +93,7 @@ bindsym $mod+a focus parent
 # Workspace Varibles
 set $workspace1 "1:  "
 set $workspace2 "2:  "
+set $workspace8 "8:  "
 set $workspace9 "9:  "
 set $workspace10 "10:  "
 
@@ -104,7 +105,7 @@ bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
+bindsym $mod+8 workspace $workspace8
 bindsym $mod+9 workspace $workspace9
 bindsym $mod+0 workspace $workspace10
 
@@ -116,13 +117,15 @@ bindsym $mod+Shift+4 move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+8 move container to workspace $workspace8
 bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 
 for_window [class="Spotify"] move to workspace $workspace10
 for_window [class="Firefox"] move to workspace $workspace2
 for_window [class="Thunderbird"] move to workspace $workspace9
+for_window [class="discord"] move to workspace $workspace8
+for_window [class="TelegramDesktop"] move to workspace $workspace8
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -231,3 +234,5 @@ exec thunderbird
 exec spotify
 exec firefox
 exec urxvt
+exec telegram-desktop
+exec discord
