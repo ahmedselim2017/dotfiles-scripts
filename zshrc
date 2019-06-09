@@ -33,8 +33,7 @@ HIST_STAMPS="dd/mm/yyyy"
 
 plugins=(
     git
- #   vi-mode    
-    sudo
+    vi-mode    
 )
 
 source $ZSH/oh-my-zsh.sh

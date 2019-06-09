@@ -114,7 +114,7 @@ highlight ColorColumn ctermbg=1
 " Useful things
 set history=700
 set undolevels=700
-noremap nN :noh<CR>
+noremap NN :noh<CR>
 
 " Tabs
 set tabstop=4
@@ -152,5 +152,6 @@ set completeopt=longest,menuone
 
 Plug 'szymonmaszke/vimpyter'
 
+Plug 'vim-airline/vim-airline'
 call plug#end()
 

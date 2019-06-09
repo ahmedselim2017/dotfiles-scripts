@@ -221,6 +221,9 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86MonBrightnessUp exec /bin/bash /home/ahmedselimuzum/brightness_up
 bindsym XF86MonBrightnessDown exec exec /bin/bash /home/ahmedselimuzum/brightness_down
 
+# Disable arrow keys 
+bindcode 237 "exec xmodmap -e 'keycode 111='; exec xmodmap -e 'keycode 113=';exec xmodmap -e 'keycode 114=';exec xmodmap -e 'keycode 116=' "
+bindcode 238 "exec xmodmap -e 'keycode 111=Up'; exec xmodmap -e 'keycode 113=Left';exec xmodmap -e 'keycode 114=Right';exec xmodmap -e 'keycode 116=Down' "
 
 # Screenshot
 
