@@ -57,27 +57,8 @@ alias resetZSHSource="source ~/.zshrc"
 alias cls="command clear"
 alias rf="rm -rf"
 alias s="sudo "
-alias v="vim"
-alias sv="sudo vim"
 alias mkd="mkdir -pv"
 alias smkd="sudo mkdir -pv"
-
-# Apt
-alias sa="sudo apt"
-alias sai="sudo apt install"
-alias sau="sudo apt update && sudo apt upgrade"
-alias ac="apt-cache"
-alias acs="apt-cache search"
-
-# Python
-alias py="python"
-alias py3="python3"
-
-# Pip
-alias sp3="sudo pip3"
-alias sp="sudo pip"
-alias sp3i="sudo pip3 install"
-alias spi="sudo pip install"
 
 # Git
 alias g="git"

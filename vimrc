@@ -143,6 +143,8 @@ inoremap <Leader>` ``
 " Saving as root
 cabbrev W w !sudo tee %
 
+" Json Format
+map <Leader>j :%!python -m json.tool<CR>
 
 " Plugins
 call plug#begin('~/.vim/plugged')
@@ -153,5 +155,9 @@ set completeopt=longest,menuone
 Plug 'szymonmaszke/vimpyter'
 
 Plug 'vim-airline/vim-airline'
+
+Plug 'elzr/vim-json'
+
 call plug#end()
+
 
