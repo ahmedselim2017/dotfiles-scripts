@@ -1,6 +1,6 @@
 !Font
-URxvt.font: xft:monospace:size=10:style=Regular:antialias=true
-URxvt.boldFont: xft:monospace:size=10:style=Bold:antialias=true
+URxvt.font: xft:monospace:size=10:style=Regular:antialias=true,xft:DejaVu Sans Mono:autohint=true:size=12
+URxvt.boldFont: xft:monospace:size=10:style=Bold:antialias=true,xft:DejaVu Sans Mono:autohint=true:size=12
 !URxvt.font: xft:RobotoMono-Regular:size=11:style=Regular:antialias=true
 !URxvt.boldFont: xft:RobotoMono-Bold:size=11:style=Bold:antialias=true
 URxvt.letterSpace: -0.5

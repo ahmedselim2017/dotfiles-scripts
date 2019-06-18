@@ -435,8 +435,7 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Background
-exec nitrogen --set-zoom-fill /home/ahmedselimuzum/Pictures/wp.png
-
+exec nitrogen --set-zoom-fill /home/ahmedselim/Pictures/wp.jpg
 exec urxvt
 exec firefox
 exec spotify
