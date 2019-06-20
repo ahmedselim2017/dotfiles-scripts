@@ -176,7 +176,7 @@ bindsym $mod+Ctrl+0 move container to workspace $ws10
 
 for_window [class="Spotify"] move to workspace $ws10
 for_window [class="Firefox"] move to workspace $ws2
-for_window [class="Thunderbird"] move to workspace $ws9
+for_window [class="Mailspring"] move to workspace $ws9
 for_window [class="Station"] move to workspace $ws7
 for_window [class="Slack"] move to workspace $ws8
 
@@ -193,7 +193,7 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
 # Open applications on specific workspaces
-# assign [class="Thunderbird"] $ws1
+# assign [class="Mailspring"] $ws1
 # assign [class="Pale moon"] $ws2
 # assign [class="Pcmanfm"] $ws3
 # assign [class="Skype"] $ws5
@@ -439,7 +439,7 @@ exec nitrogen --set-zoom-fill /home/ahmedselim/Pictures/wp.jpg
 exec urxvt
 exec firefox
 exec spotify
-exec thunderbird
+exec mailspring
 exec trello
 exec slack
 exec flameshot

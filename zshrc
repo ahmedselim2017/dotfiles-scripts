@@ -29,7 +29,19 @@ export UPDATE_ZSH_DAYS=13
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
+
 HIST_STAMPS="dd/mm/yyyy"
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=10000000
+SAVEHIST=10000000
+
+setopt BANG_HIST                 # Treat the '!' character specially during expansion.
+setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
+setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
+setopt SHARE_HISTORY             # Share history between all sessions.
+setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
+setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
+setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
 plugins=(
     git
@@ -70,7 +82,6 @@ alias gc="git commit -m"
 alias gac="git commit -am"
 
 #Executable Files
-alias gdrive="~/gDrive"
 
 export TERM='xterm-256color'
 
