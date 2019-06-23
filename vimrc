@@ -21,6 +21,12 @@ runtime! debian.vim
 " options, so any other options should be set AFTER setting 'compatible'.
 "set compatible
 
+" Uncomment the following to have Vim load indentation rules and plugins
+" according to the detected filetype.
+if has("autocmd")
+  filetype plugin indent on
+endif
+
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.
 if has("syntax")
@@ -37,11 +43,7 @@ endif
 "  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 "endif
 
-" Uncomment the following to have Vim load indentation rules and plugins
-" according to the detected filetype.
-"if has("autocmd")
-"  filetype plugin indent on
-"endif
+
 
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
@@ -133,17 +135,48 @@ set smartcase
 noremap vv ve
 
 " Autoclose
-inoremap <Leader>( ()
-inoremap <Leader>{ {}
-inoremap <Leader>[ []
-inoremap <Leader>" ""
-inoremap <Leader>' ''
-inoremap <Leader>` ``
+inoremap ( ()<esc>ha
+inoremap { {}<esc>ha
+inoremap [ []<esc>ha
+inoremap " ""<esc>ha
+inoremap ' ''<esc>ha
+inoremap ` ``<esc>ha
+
+
+"Disable Arrow Keys
+nnoremap <Right> :echo "No right for you!"<CR>
+vnoremap <Right> :<C-u>echo "No right for you!"<CR>
+inoremap <Right> <C-o>:echo "No right for you!"<CR>
+
+nnoremap <Left> :echo "No left for you!"<CR>
+vnoremap <Left> :<C-u>echo "No left for you!"<CR>
+inoremap <Left> <C-o>:echo "No left for you!"<CR>
+
+nnoremap <Up> :echo "No up for you!"<CR>
+vnoremap <Up> :<C-u>echo "No up for you!"<CR>
+inoremap <Up> <C-o>:echo "No up for you!"<CR>
+
+nnoremap <Down> :echo "No down for you!"<CR>
+vnoremap <Down> :<C-u>echo "No down  for you!"<CR>
+inoremap <Down> <C-o>:echo "No down for you!"<CR>
 
 " Saving as root
 cabbrev W w !sudo tee %
 
-" Json Format
+"Save Latex
+cabbrev wl :w<CR><esc>:!pdflatex %<CR><CR>
+
+"Latex when autoclose a tag move cursor
+imap }} ]]<esc>:sleep 100m<cr>k
+
+
+"Add new line 
+nmap O o<Esc>
+
+"Easily go to normal mode
+inoremap jj <esc>
+
+"Json Format
 map <Leader>j :%!python -m json.tool<CR>
 
 " Plugins
@@ -158,6 +191,6 @@ Plug 'vim-airline/vim-airline'
 
 Plug 'elzr/vim-json'
 
+Plug 'lervag/vimtex'
+
 call plug#end()
-
-
