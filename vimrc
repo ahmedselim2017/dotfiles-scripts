@@ -86,12 +86,6 @@ noremap <Leader>0 :tablast<CR>
 noremap <Leader>t :tabnew<CR>
 noremap <Leader>c :tabclose<CR>
 
-" Easily moving between split windows
-map <c-j> <c-w>j
-map <c-k> <c-k>k
-map <c-h> <c-w>h
-map <c-l> <c-w>l
-
 
 " Easily sorting code
 vnoremap <Leader>s :sort<CR>
@@ -135,13 +129,13 @@ set smartcase
 noremap vv ve
 
 " Autoclose
-inoremap ( ()<esc>ha
-inoremap { {}<esc>ha
-inoremap [ []<esc>ha
-inoremap " ""<esc>ha
-inoremap ' ''<esc>ha
-inoremap ` ``<esc>ha
-
+inoremap <Leader>( ()<esc>ha
+inoremap <Leader>{ {}<esc>ha
+inoremap <Leader>[ []<esc>ha
+inoremap <Leader>" ""<esc>ha
+inoremap <Leader>' ''<esc>ha
+inoremap <Leader>` ``<esc>ha
+inoremap <Leader>> <><esc>ha
 
 "Disable Arrow Keys
 nnoremap <Right> :echo "No right for you!"<CR>
@@ -160,21 +154,36 @@ nnoremap <Down> :echo "No down for you!"<CR>
 vnoremap <Down> :<C-u>echo "No down  for you!"<CR>
 inoremap <Down> <C-o>:echo "No down for you!"<CR>
 
+
+"Add new keys instead of arrow keys
+inoremap <c-l> <Right>
+inoremap <c-h> <Left>
+inoremap <c-k> <Up>
+inoremap <c-j> <Down>
+
+
+
 " Saving as root
 cabbrev W w !sudo tee %
 
-"Save Latex
-cabbrev wl :w<CR><esc>:!pdflatex %<CR><CR>
+"Latex to pdf
+command L !pdflatex %<CR><CR>
+
+"Add bibliography for latex
+command B !biber %:r <CR>
+
+"Shortcut of shorcuts
+command LB !pdflatex % && biber %:r <CR><CR>
+
 
 "Latex when autoclose a tag move cursor
-imap }} ]]<esc>:sleep 100m<cr>k
-
+imap }} ]]<esc>:sleep 150m<cr>khi
 
 "Add new line 
 nmap O o<Esc>
 
 "Easily go to normal mode
-inoremap jj <esc>
+inoremap qq <esc>
 
 "Json Format
 map <Leader>j :%!python -m json.tool<CR>
@@ -192,5 +201,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'elzr/vim-json'
 
 Plug 'lervag/vimtex'
+
+Plug 'honza/vim-snippets'
 
 call plug#end()

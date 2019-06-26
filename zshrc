@@ -45,7 +45,7 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
 plugins=(
     git
-    vi-mode    
+    sudo
 )
 
 source $ZSH/oh-my-zsh.sh
