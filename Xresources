@@ -8,8 +8,6 @@ URxvt.letterSpace: -0.5
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 
-
-
 URxvt.iso14755: false
 URxvt.iso14755_52: false
 
@@ -22,42 +20,76 @@ URxvt.scrollTtyOutput: false
 URxvt.scrollWithBuffer: true
 URcvt.scrollTtyKeypress: true
 
-
 ! special
 *.foreground:   #cbcdd2
 *.background:   #1c1d21
 *.cursorColor:  #d6d8db
+URxvt*inheritPixmap: true
+! URxvt*shading: 0 to 99 darkens, 101 to 200 lightens
+URxvt*shading: 30
 URxvt.transparent: true
-URxvt.shading: 35
+! colors --------------------------------------------------------------------
+urxvt*foreground:   #D4D2CF
+!  black
+urxvt*color0:		#0A0A0A
+urxvt*color8:		#201F1F
+!  red
+urxvt*color1:		#A22618
+urxvt*color9:		#E84C24
+!  green
+urxvt*color2:		#539927
+urxvt*color10:		#70B751
+!  yellow
+urxvt*color3:		#8E6514
+urxvt*color11:		#B4A05A
+!  blue
+urxvt*color4:		#113050
+urxvt*color12:		#275fA0
+!  magenta
+urxvt*color5:		#543973
+urxvt*color13:		#84699B
+!  cyan
+urxvt*color6:		#4D92B4
+urxvt*color14:		#8BCAEA
+!  white
+urxvt*color7:		#A3A29F
+urxvt*color15:		#D4D2CF
 
-! black
-*.color0:       #1c1d21 
-*.color8:       #babcc4
+urxvt*colorBD:		#275FA0
+urxvt*colorUL:		#E84C24
 
-! red
-*.color1:       #eb3d54
-*.color9:       #eb3d54
+! end colors ----------------------------------------------------------------
 
-! green
-*.color2:       #78bd65
-*.color10:      #78bd65
+urxvt*scrollColor:   #212121
 
-! yellow
-*.color3:       #e5cd52
-*.color11:      #e5cd52
-
-! blue
-*.color4:       #4fb4d8 
-*.color12:      #4fb4d8
-
-! magenta
-*.color5:       #B85C8A
-*.color13:      #B85C8A
-
-! cyan
-*.color6:       #669c9c
-*.color14:      #669c9c
-
-! white
-*.color7:       #cbcdd2 
-*.color15: #cbcdd2
+!! black
+!*.color0:       #1c1d21 
+!*.color8:       #babcc4
+!
+!! red
+!*.color1:       #eb3d54
+!*.color9:       #eb3d54
+!
+!! green
+!*.color2:       #78bd65
+!*.color10:      #78bd65
+!
+!! yellow
+!*.color3:       #e5cd52
+!*.color11:      #e5cd52
+!
+!! blue
+!*.color4:       #4fb4d8 
+!*.color12:      #4fb4d8
+!
+!! magenta
+!*.color5:       #B85C8A
+!*.color13:      #B85C8A
+!
+!! cyan
+!*.color6:       #669c9c
+!*.color14:      #669c9c
+!
+!! white
+!*.color7:       #cbcdd2 
+!*.color15: #cbcdd2

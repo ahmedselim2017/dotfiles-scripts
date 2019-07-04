@@ -193,8 +193,11 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'klen/python-mode'
 set completeopt=longest,menuone
+set foldlevelstart=10
 
-Plug 'szymonmaszke/vimpyter'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+
+"Plug 'szymonmaszke/vimpyter'
 
 Plug 'vim-airline/vim-airline'
 
@@ -202,6 +205,9 @@ Plug 'elzr/vim-json'
 
 Plug 'lervag/vimtex'
 
-Plug 'honza/vim-snippets'
+Plug 'sirver/ultisnips'
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
 call plug#end()

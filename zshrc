@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="~/.oh-my-zsh"
+export ZSH="/home/ahmedselim/.oh-my-zsh"
 
 export EDITOR="/usr/bin/vim"
 
@@ -66,6 +66,7 @@ alias ohmyzsh="vim ~/.oh-my-zsh"
 alias resetZSHSource="source ~/.zshrc"
 
 # Some Commands
+alias cl="command clear"
 alias cls="command clear"
 alias rf="rm -rf"
 alias s="sudo "
@@ -100,3 +101,9 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+PATH="/home/ahmedselim/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/ahmedselim/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/ahmedselim/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/ahmedselim/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/ahmedselim/perl5"; export PERL_MM_OPT;

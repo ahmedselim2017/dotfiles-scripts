@@ -443,3 +443,5 @@ exec mailspring
 exec trello
 exec slack
 exec flameshot
+exec redshift
+exec station
