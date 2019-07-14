@@ -46,6 +46,7 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 plugins=(
     git
     sudo
+    zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -67,11 +68,13 @@ alias resetZSHSource="source ~/.zshrc"
 
 # Some Commands
 alias cl="command clear"
-alias cls="command clear"
+alias cls="command clear; ls"
 alias rf="rm -rf"
 alias s="sudo "
+alias mkd='mkdir -pv'
 alias mkd="mkdir -pv"
 alias smkd="sudo mkdir -pv"
+alias jpy="jupyter notebook"
 
 # Git
 alias g="git"
