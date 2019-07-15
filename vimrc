@@ -19,7 +19,7 @@ runtime! debian.vim
 " Uncomment the next line to make Vim more Vi-compatible
 " NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous
 " options, so any other options should be set AFTER setting 'compatible'.
-"set compatible
+" set compatible
 
 " Uncomment the following to have Vim load indentation rules and plugins
 " according to the detected filetype.
@@ -49,8 +49,8 @@ endif
 " differently from regular Vi. They are highly recommended though.
 set showcmd		" Show (partial) command in status line.
 set showmatch		" Show matching brackets.
-"set autowrite		" Automatically save before commands like :next and :make
-"set hidden		" Hide buffers when they are abandoned
+" set autowrite		" Automatically save before commands like :next and :make
+" set hidden		" Hide buffers when they are abandoned
 set mouse=n		" Enable mouse usage (all modes)
 
 " Source a global configuration file if available
@@ -58,9 +58,9 @@ if filereadable("/etc/vim/vimrc.local")
     source /etc/vim/vimrc.local
 endif
 
-"==============
+" ==============
 " Custom Cofig
-"==============
+" ==============
 
 " System Clipboard support
 set pastetoggle=<F2>
@@ -81,9 +81,9 @@ noremap <Leader>8 8gt
 noremap <Leader>9 9gt
 noremap <Leader>0 :tablast<CR>
 noremap <Leader>t :tabnew<CR>
-noremap <Leader>c :tabclose<CR>
+noremap <Leader>q :tabclose<CR>
 noremap <Leader>n :tabnext<CR>
-noremap <Leader>b :tabpevious<CR>
+noremap <Leader>b :tabprevious<CR>
 
 " Easily sorting code
 vnoremap <Leader>s :sort<CR>
@@ -92,6 +92,12 @@ vnoremap <Leader>s :sort<CR>
 vnoremap < <gv
 vnoremap > >gv
 
+" Open file explorer easily
+nnoremap - :shell<CR>
+nnoremap _ :Sexplore<CR>
+
+" More Secure Vimcryption
+set cryptmethod=blowfish
 
 " Enable syntax highlighting
 filetype off
@@ -139,10 +145,10 @@ inoremap <Leader>' ''<esc>ha
 inoremap <Leader>` ``<esc>ha
 inoremap <Leader>> <><esc>ha
 
-"Disable Arrow Keys
+" Disable Arrow Keys
 nnoremap <Right> :echo "No right for you!"<CR>
 vnoremap <Right> :<C-u>echo "No right for you!"<CR>
-inoremap <Right> <C-o>:echo "No right for you!"<CR>
+inoremap<Right> <C-o>:echo "No right for you!"<CR>
 
 nnoremap <Left> :echo "No left for you!"<CR>
 vnoremap <Left> :<C-u>echo "No left for you!"<CR>
@@ -156,36 +162,43 @@ nnoremap <Down> :echo "No down for you!"<CR>
 vnoremap <Down> :<C-u>echo "No down  for you!"<CR>
 inoremap <Down> <C-o>:echo "No down for you!"<CR>
 
-
-"Add new keys instead of arrow keys
+" Add new keys instead of arrow keys
 inoremap <c-l> <Right>
 inoremap <c-h> <Left>
 inoremap <c-k> <Up>
 inoremap <c-j> <Down>
 
+" Easily move between windows
+noremap <c-h> <c-w>h
+noremap <c-j> <c-w>j
+noremap <c-k> <c-w>k
+noremap <c-l> <c-w>l
+
 " Saving as root
 cabbrev W w !sudo tee %
 
-"Latex to pdf
+" Latex to pdf
 command L !pdflatex %<CR><CR>
 
-"Add bibliography for latex
+" Add bibliography for latex
 command B !biber %:r <CR>
 
-"Shortcut of shorcuts
+" Shortcut of shorcuts
 command LB !pdflatex % && biber %:r <CR><CR>
 
+" Pasting in normal mode should append to the right of cursor
+nmap <C-V>      a<C-V><ESC>
 
-"Latex when autoclose a tag move cursor
+" Latex when autoclose a tag move cursor
 imap }} ]]<esc>:sleep 150m<cr>khi
 
-"Add new line 
+" Add new line 
 nmap O o<Esc>
 
-"Easily go to normal mode
+" Easily go to normal mode
 imap ff <esc>
 
-"Json Format
+" Json Format
 map <Leader>j :%!python -m json.tool<CR>
 
 " Plugins
@@ -197,7 +210,7 @@ set foldlevelstart=10
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
-"Plug 'szymonmaszke/vimpyter'
+" Plug 'szymonmaszke/vimpyter'
 
 Plug 'vim-airline/vim-airline'
 

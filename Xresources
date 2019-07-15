@@ -25,7 +25,7 @@ URcvt.scrollTtyKeypress: true
 *.background:   #1c1d21
 *.cursorColor:  #d6d8db
 URxvt*inheritPixmap: true
-! URxvt*shading: 0 to 99 darkens, 101 to 200 lightens
+!URxvt*shading: 0 to 99 darkens, 101 to 200 lightens
 URxvt*shading: 30
 URxvt.transparent: true
 ! colors --------------------------------------------------------------------
