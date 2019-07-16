@@ -85,6 +85,23 @@ noremap <Leader>q :tabclose<CR>
 noremap <Leader>n :tabnext<CR>
 noremap <Leader>b :tabprevious<CR>
 
+inoremap <Leader>1 <Esc>1gt
+inoremap <Leader>2 <Esc>2gt
+inoremap <Leader>3 <Esc>3gt
+inoremap <Leader>4 <Esc>4gt
+inoremap <Leader>5 <Esc>5gt
+inoremap <Leader>6 <Esc>6gt
+inoremap <Leader>7 <Esc>7gt
+inoremap <Leader>8 <Esc>8gt
+inoremap <Leader>9 <Esc>9gt
+inoremap <Leader>0 <Esc>:tablast<CR>
+inoremap <Leader>t <Esc>:tabnew<CR>
+inoremap <Leader>q <Esc>:tabclose<CR>
+inoremap <Leader>n <Esc>:tabnext<CR>
+inoremap <Leader>b <Esc>:tabprevious<CR>
+
+
+
 " Easily sorting code
 vnoremap <Leader>s :sort<CR>
 
@@ -93,11 +110,16 @@ vnoremap < <gv
 vnoremap > >gv
 
 " Open file explorer easily
-nnoremap - :shell<CR>
-nnoremap _ :Sexplore<CR>
+nnoremap - :<c-z>
+nnoremap _ :Texplore<CR>
 
 " More Secure Vimcryption
 set cryptmethod=blowfish
+
+" Comment lines easily
+inoremap <Leader>/ <Esc>0i// <Esc>$i
+inoremap <Leader># <Esc>0i## <Esc>$i
+inoremap <Leader>" <Esc>0i"" <Esc>$i
 
 " Enable syntax highlighting
 filetype off
@@ -112,8 +134,9 @@ set colorcolumn=80
 highlight ColorColumn ctermbg=1
 
 " Useful things
-set history=700
-set undolevels=700
+set history=1000
+set undolevels=1000
+set title                
 nnoremap <CR> :noh<CR>
 
 " Tabs
@@ -174,6 +197,10 @@ noremap <c-j> <c-w>j
 noremap <c-k> <c-w>k
 noremap <c-l> <c-w>l
 
+" Save and run Python Code
+nnoremap ,p :w<CR>:!python %<CR>
+
+
 " Saving as root
 cabbrev W w !sudo tee %
 
@@ -185,9 +212,6 @@ command B !biber %:r <CR>
 
 " Shortcut of shorcuts
 command LB !pdflatex % && biber %:r <CR><CR>
-
-" Pasting in normal mode should append to the right of cursor
-nmap <C-V>      a<C-V><ESC>
 
 " Latex when autoclose a tag move cursor
 imap }} ]]<esc>:sleep 150m<cr>khi
@@ -204,10 +228,10 @@ map <Leader>j :%!python -m json.tool<CR>
 " Plugins
 call plug#begin('~/.vim/plugged')
 
-Plug 'klen/python-mode'
-set completeopt=longest,menuone
-set foldlevelstart=10
-
+" Plug 'klen/python-mode'
+" set completeopt=longest,menuone
+" set foldlevelstart=10
+" 
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
 " Plug 'szymonmaszke/vimpyter'
@@ -218,9 +242,5 @@ Plug 'elzr/vim-json'
 
 Plug 'lervag/vimtex'
 
-Plug 'sirver/ultisnips'
-let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
 call plug#end()

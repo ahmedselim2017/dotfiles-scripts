@@ -89,24 +89,23 @@ alias gac="git commit -am"
 
 export TERM='xterm-256color'
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/ahmedselim/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/ahmedselim/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/ahmedselim/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/ahmedselim/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-
 PATH="/home/ahmedselim/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/home/ahmedselim/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/home/ahmedselim/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/ahmedselim/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/ahmedselim/perl5"; export PERL_MM_OPT;
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/ahmedselim/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/ahmedselim/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/ahmedselim/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/ahmedselim/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
