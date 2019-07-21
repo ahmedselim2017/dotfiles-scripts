@@ -238,6 +238,9 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+# remap power off key
+bindsym XF86PowerOff mode "$mode_system"
+
 # Set shut down, restart and locking features
 bindsym $mod+shift+w mode "$mode_system"
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
@@ -331,7 +334,7 @@ set_from_resource $term_color15    color15
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
 	i3bar_command i3bar
-	status_command i3status
+	status_command i3blocks
 	position bottom
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
@@ -445,3 +448,4 @@ exec slack
 exec flameshot
 exec redshift
 exec station
+exec xfce4-power-manager

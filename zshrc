@@ -45,7 +45,6 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
 plugins=(
     git
-    sudo
     zsh-autosuggestions
 )
 
@@ -75,6 +74,7 @@ alias mkd='mkdir -pv'
 alias mkd="mkdir -pv"
 alias smkd="sudo mkdir -pv"
 alias jpy="jupyter notebook"
+alias haydaa='sudo $(fc -ln -1)'
 
 # Git
 alias g="git"
@@ -97,15 +97,15 @@ PERL_MM_OPT="INSTALL_BASE=/home/ahmedselim/perl5"; export PERL_MM_OPT;
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/ahmedselim/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
+#__conda_setup="$('/home/ahmedselim/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+#if [ $? -eq 0 ]; then
+    #eval "$__conda_setup"
+#else
+if [ -f "/home/ahmedselim/anaconda3/etc/profile.d/conda.sh" ]; then
+    . "/home/ahmedselim/anaconda3/etc/profile.d/conda.sh"
 else
-    if [ -f "/home/ahmedselim/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/ahmedselim/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/ahmedselim/anaconda3/bin:$PATH"
-    fi
+    export PATH="/home/ahmedselim/anaconda3/bin:$PATH"
 fi
-unset __conda_setup
+#fi
+#unset __conda_setup
 # <<< conda initialize <<<
