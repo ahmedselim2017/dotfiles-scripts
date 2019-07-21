@@ -4,8 +4,8 @@ unmountable=$(lsblk -lp | grep -v "part $\|disk $\|/dev/sda\|NAME" | awk '{print
 [[ "$unmountable" = "" ]] && exit 0
 choosen=$(echo "$unmountable" | dmenu -sb '#16a085' -nb '#222d31' -i -p 'Hangi Diski Çıkar?' | awk '{print $1}')
 [[ "$choosen" = "" ]] && exit 0
-isunmounted=$(umount $choosen && notify-send "$choosen ın bağlantısı kesildi")
+isunmounted=$(sudo umount $choosen && notify-send "$choosen ın bağlantısı kesildi")
 [[ "$isunmounted" = "" ]] && exit 0
 shouldforce=$(printf "Hayır\nEvet" |  dmenu -sb '#16a085' -nb '#222d31' -i -p 'Disk şuanda meşgul. Yinede çıkar?')
 [[ "$shouldforce" = "Evet" ]] && exit 0
-umont $choosen && notify-send "$choosen ın bağlantısı kesildi"
+sudo umont $choosen && notify-send "$choosen ın bağlantısı kesildi"
