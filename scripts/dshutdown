@@ -1,3 +1,5 @@
+#!/bin/sh
+
 response=$(printf 'Geri\nKapat\nYeniden Başlat' | dmenu -sb '#e02840' -nb '#6b262f' -i -p 'Ne Yapmak İstiyorsun? ')
 
 case $response in
