@@ -8,4 +8,4 @@ isunmounted=$(sudo umount $choosen 2>&1 && notify-send "$choosen ın bağlantıs
 [[ "$isunmounted" = "" ]] && exit 0
 shouldforce=$(printf "Hayır\nEvet" |  dmenu -sb '#16a085' -nb '#222d31' -i -p 'Disk şuanda meşgul. Yinede çıkar?')
 [[ "$shouldforce" != "Evet" ]] && exit 0
-sudo umont $choosen && notify-send "$choosen ın bağlantısı kesildi"
+sudo umount $choosen && notify-send "$choosen ın bağlantısı kesildi"
