@@ -75,7 +75,7 @@ alias mkd="mkdir -pv"
 alias smkd="sudo mkdir -pv"
 alias jpy="jupyter notebook"
 alias haydaa='sudo $(fc -ln -1)'
-
+alias yaa="yay $(fc -ln -1)"
 # Git
 alias g="git"
 alias gs="git status"
