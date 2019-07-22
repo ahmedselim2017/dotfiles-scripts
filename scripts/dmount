@@ -13,4 +13,4 @@ if [[ ! -d "$mountpoint" ]]; then
     [[ "$shouldmkdir" = "Hayır" ]] && exit 0
     sudo mkdir -p "$mountpoint"
 fi
-sudo mount $choosen $mountpoint && notify-send "$choosen $mountpoint e bağlandı "
+sudo mount $choosen $mountpoint && /usr/bin/rootify "Bağlantı Sağlandı" "$choosen  >  $mountpoint "
