@@ -9,7 +9,7 @@ dirs=$(find /mnt /media /mount /home -type d -maxdepth 3 2>/dev/null | tail -n +
 mountpoint=$(echo "$dirs" | dmenu -sb '#16a085' -nb '#222d31' -i -p 'Diski nereye Bağla?' )
 [[ "$mountpoint" = "" ]] && exit 0
 if [[ ! -d "$mountpoint" ]]; then
-    shouldmkdir=$(printf 'Evet\nHayır' | dmenu -sb '#16a085' -nb '#222d31' -i -p 'Böyle birşey yok. Oluştur?' )
+    shouldmkdir=$(printf 'Evet\nHayır' | dmenu -sb '#16a085' -nb '#222d31'-i -p 'Böyle birşey yok. Oluştur?' )
     [[ "$shouldmkdir" = "Hayır" ]] && exit 0
     sudo mkdir -p "$mountpoint"
 fi
