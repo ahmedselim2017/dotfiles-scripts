@@ -11,8 +11,10 @@ USER_DBUS_PROCESS_NAME="gconfd-2"
 USER="ahmedselim"
 NOTIFY_SEND_BIN="/usr/bin/notify-send"
 
-TITLE="title"
-MESSAGE="notify message"
+TITLE="$1"
+MESSAGE="$2"
+
+( [ -z "$1" ] || [ -z "$2" ] ) && echo 'Kullanım: rootify <title> <message>'
 
 # get pid of user dbus process
 DBUS_PID=`ps ax | grep $USER_DBUS_PROCESS_NAME | grep -v grep | awk '{ print $1 }'`
