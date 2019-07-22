@@ -20,6 +20,7 @@ URxvt.scrollTtyOutput: false
 URxvt.scrollWithBuffer: true
 URcvt.scrollTtyKeypress: true
 
+
 ! special
 *.foreground:   #cbcdd2
 *.background:   #1c1d21
