@@ -56,8 +56,6 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
-bindsym $mod+F2 exec palemoon
-bindsym $mod+F3 exec pcmanfm
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec gksu pcmanfm
 bindsym $mod+F5 exec terminal -e 'mocp'
@@ -436,6 +434,10 @@ mode "$mode_gaps_outer" {
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+
+# Disk Mounting Commands
+bindsym $mod+F1 exec sudo dmount
+bindsym $mod+F2 exec sudo dumount
 
 # Background
 exec nitrogen --set-zoom-fill /home/ahmedselim/wp.jpg
