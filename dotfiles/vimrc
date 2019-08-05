@@ -100,8 +100,6 @@ inoremap <Leader>q <Esc>:tabclose<CR>
 inoremap <Leader>n <Esc>:tabnext<CR>
 inoremap <Leader>b <Esc>:tabprevious<CR>
 
-
-
 " Easily sorting code
 vnoremap <Leader>s :sort<CR>
 
@@ -147,8 +145,14 @@ set shiftround
 set expandtab
 
 " Delete without yank
-map ,d "_d
-map ,D "_D
+map <Leader>d "_d
+map <Leader>D "_D
+map <Leader>x "_x
+map <Leader>X "_X
+
+" Change witouth yank
+map <Leader>c "_c
+map <Leader>C "_C
 
 " Make search case insensitive
 set hlsearch
@@ -198,7 +202,7 @@ noremap <c-k> <c-w>k
 noremap <c-l> <c-w>l
 
 " Save and run Python Code
-nnoremap ,p :w<CR>:!python %<CR>
+nnoremap <Leader>p :w<CR>:!python %<CR>
 
 
 " Saving as root
@@ -217,10 +221,13 @@ command LB !pdflatex % && biber %:r <CR><CR>
 imap }} ]]<esc>:sleep 150m<cr>khi
 
 " Add new line 
-nmap O o<Esc>
+nmap <Leader>o o<Esc>
 
 " Easily go to normal mode
 imap ff <esc>
+
+" Easily quit all
+comman Q quitall!
 
 " Json Format
 map <Leader>j :%!python -m json.tool<CR>

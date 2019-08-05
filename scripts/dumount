@@ -7,5 +7,5 @@ choosen=$(echo "$unmountable" | dmenu -sb '#16a085' -nb '#222d31' -i -p 'Hangi D
 isunmounted=$(sudo umount $choosen 2>&1 && rootify "Bağlantı Kesildi" "$choosen diskinin bağlantısı kesildi")
 [[ "$isunmounted" = "" ]] && exit 0
 shouldforce=$(printf "Hayır\nEvet" | dmenu -sb '#e02840' -nb '#6b262f' -i -p 'Disk şuanda meşgul. Yinede çıkar?')
-[[ "$shouldforce" != "Evet" ]] && exit 0
-sudo umount $choosen && rootify "Bağlantı Kesildi"  "$choosen diskinin bağlantısı kesildi"
+[[ "$shouldforce" == "Hayır" ]] && exit 0
+sudo umount -l $choosen && rootify "Bağlantı Kesildi"  "$choosen diskinin bağlantısı kesildi"

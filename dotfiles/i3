@@ -449,6 +449,7 @@ bindsym $mod+Shift+m exec dman
 
 # Open Searcher
 bindsym $mod+F2 exec dsearch
+
 # Background
 exec nitrogen --set-zoom-fill /home/ahmedselim/wp.jpg
 exec urxvt

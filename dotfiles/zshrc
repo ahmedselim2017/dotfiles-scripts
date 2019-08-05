@@ -72,11 +72,14 @@ alias cls="command clear; ls"
 alias rf="rm -rf"
 alias s="sudo "
 alias mkd='mkdir -pv'
-alias mkd="mkdir -pv"
 alias smkd="sudo mkdir -pv"
+alias btw="neofetch"
 alias jpy="jupyter notebook"
 alias haydaa='s $(fc -ln -1)'
 alias yaa='yay $(fc -ln -1)'
+alias q='exit'
+alias 'cd..'='cd ..'
+alias pis='pip install'
 
 # Git
 alias g="git"
@@ -85,7 +88,11 @@ alias gaa="git add -A"
 alias gad="git add ."
 alias gpm="git push origin master"
 alias gc="git commit -m"
-alias gac="git commit -am"
+alias gca="git commit -am"
+
+# Vim
+alias vi="vim"
+alias v="vim"
 
 #Executable Files
 
