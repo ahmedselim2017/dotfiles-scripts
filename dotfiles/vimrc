@@ -222,8 +222,11 @@ command LB !pdflatex % && biber %:r <CR><CR>
 " Latex when autoclose a tag move cursor
 imap }} ]]<esc>:sleep 150m<cr>khi
 
-" Add new line 
+" Add new line under current line without entering insert mode 
 nmap <Leader>o o<Esc>
+
+" Add new line above current line without entering insert mode
+nmap <Leader>O O<Esc>
 
 " Easily go to normal mode
 imap ff <esc>
