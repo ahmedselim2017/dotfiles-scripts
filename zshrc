@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/ahmedselim/.oh-my-zsh"
+export ZSH="/home/ubuntu/.oh-my-zsh"
 
 export EDITOR="/usr/bin/vim"
 
@@ -60,7 +60,6 @@ source $ZSH/oh-my-zsh.sh
 # Aliases
 
 # Configs
-alias i3config="vim ~/dotfiles-scripts/dotfiles/i3"
 alias vimconfig="vim ~/dotfiles-scripts/dotfiles/vimrc"
 alias zshconfig="vim ~/dotfiles-scripts/dotfiles/zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
@@ -94,15 +93,6 @@ alias gca="git commit -am"
 alias vi="vim"
 alias v="vim"
 
-#Executable Files
-
-export TERM='xterm-256color'
-
-PATH="/home/ahmedselim/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/ahmedselim/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/ahmedselim/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/ahmedselim/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/ahmedselim/perl5"; export PERL_MM_OPT;
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -110,10 +100,10 @@ PERL_MM_OPT="INSTALL_BASE=/home/ahmedselim/perl5"; export PERL_MM_OPT;
 #if [ $? -eq 0 ]; then
     #eval "$__conda_setup"
 #else
-if [ -f "/home/ahmedselim/anaconda3/etc/profile.d/conda.sh" ]; then
-    . "/home/ahmedselim/anaconda3/etc/profile.d/conda.sh"
+if [ -f "/home/ubuntu/anaconda3/etc/profile.d/conda.sh" ]; then
+    . "/home/ubuntu/anaconda3/etc/profile.d/conda.sh"
 else
-    export PATH="/home/ahmedselim/anaconda3/bin:$PATH"
+    export PATH="/home/ubuntu/anaconda3/bin:$PATH"
 fi
 #fi
 #unset __conda_setup
