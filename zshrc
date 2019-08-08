@@ -60,8 +60,8 @@ source $ZSH/oh-my-zsh.sh
 # Aliases
 
 # Configs
-alias vimconfig="vim ~/dotfiles-scripts/dotfiles/vimrc"
-alias zshconfig="vim ~/dotfiles-scripts/dotfiles/zshrc"
+alias vimconfig="vim ~/dotfiles-scripts/vimrc"
+alias zshconfig="vim ~/dotfiles-scripts/zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias resetZSHSource="source ~/.zshrc"
 
