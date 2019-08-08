@@ -237,22 +237,4 @@ comman Q quitall!
 " Json Format
 map <Leader>j :%!python -m json.tool<CR>
 
-" Plugins
-call plug#begin('~/.vim/plugged')
 
-" Plug 'klen/python-mode'
-" set completeopt=longest,menuone
-" set foldlevelstart=10
-" 
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-
-" Plug 'szymonmaszke/vimpyter'
-
-Plug 'vim-airline/vim-airline'
-
-Plug 'elzr/vim-json'
-
-Plug 'lervag/vimtex'
-
-
-call plug#end()
