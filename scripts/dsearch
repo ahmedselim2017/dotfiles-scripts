@@ -46,7 +46,7 @@ search_google(){
 }
 
 choose(){
-    result=$(printf "Github\nStackoverflow\nGoogle\nYoutube" | dmenu -sb '#16a085' -nb '#222d31' -i -p 'Hangisinde Aramak İstersin? ')
+    result=$(printf "Github\nStackoverflow\nGoogle\nYoutube" | dmenu -i -p 'Hangisinde Aramak İstersin? ')
     echo "$result"
 }
 
