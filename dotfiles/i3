@@ -58,7 +58,7 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 # bindsym $mod+F3 exec ranger
 bindsym $mod+F5 exec terminal -e 'mocp'
-bindsym $mod+t exec --no-startup-id pkill compton
+#bindsym $mod+t exec --no-startup-id pkill compton
 bindsym $mod+Ctrl+t exec --no-startup-id compton -b
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym $mod+F4 exec --no-startup-id i3-scrot
@@ -120,7 +120,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+Shift+s sticky toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+#bindsym $mod+a focus parent
 
 # move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -451,8 +451,8 @@ bindsym $mod+Shift+m exec dman
 bindsym $mod+F2 exec dsearch
 
 # Background
-exec nitrogen --set-zoom-fill /home/ahmedselim/wp.jpg
 exec urxvt
+exec --no-strtup-id nitrogen --set-zoom-fill /usr/share/backgrounds/Stalking_Ocelot_by_Sayantan_Chaudhuri.jpg
 exec firefox
 exec spotify
 exec mailspring
@@ -462,3 +462,19 @@ exec flameshot
 exec redshift
 exec station
 exec xfce4-power-manager
+
+for_window [instance="pythondrop"] floating enable
+for_window [instance="pythondrop"] resize set 625 300
+for_window [instance="pythondrop"] move scratchpad
+for_window [instance="pythondrop"] border pixel 5
+exec --no-startup-id urxvt -fg white -name pythondrop -e python -q
+
+bindsym $mod+p [instance="pythondrop"] scratchpad show; [instance="pythondrop"] move position center
+
+for_window [instance="shell"] floating enable
+for_window [instance="shell"] resize set 625 300
+for_window [instance="shell"] move scratchpad
+for_window [instance="shell"] border pixel 5
+exec --no-startup-id urxvt -fg white -name shell 
+
+bindsym $mod+t [instance="shell"] scratchpad show; [instance="shell"] move position center

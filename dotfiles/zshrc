@@ -76,10 +76,12 @@ alias smkd="sudo mkdir -pv"
 alias btw="neofetch"
 alias jpy="jupyter notebook"
 alias haydaa='s $(fc -ln -1)'
-alias yaa='yay $(fc -ln -1)'
+alias yaa='sudo pacman -Ss $(fc -ln -1)'
 alias q='exit'
 alias 'cd..'='cd ..'
 alias pis='pip install'
+alias calc='qalc'
+
 
 # Git
 alias g="git"
