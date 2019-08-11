@@ -5,7 +5,7 @@ response=$(printf 'Geri\nKapat\nYeniden Başlat' | dmenu -i -p 'Ne Yapmak İstiy
 case $response in
     'Geri') echo exit 0;;
     'Kapat') echo 
-        [[ $(printf 'Hayır\nEvet' | dmenu -i -p 'Emin Misin? Kapatacak Bak ') == Evet ]] && sudo shutdown now;;
+        [[ $(printf 'Hayır\nEvet' | dmenu -sb '#e02840' -nb '#6b262f' -i -p 'Emin Misin? Kapatacak Bak ') == Evet ]] && sudo shutdown now;;
     'Yeniden Başlat') 
-        [[ $(printf 'Hayır\nEvet' | dmenu -i -p 'Emin Misin? Yeniden Başlatacak Bak ') == Evet ]] && sudo shutdown -r now;;
+        [[ $(printf 'Hayır\nEvet' | dmenu -sb '#e02840' -nb '#6b262f' -i -p 'Emin Misin? Yeniden Başlatacak Bak ') == Evet ]] && sudo shutdown -r now;;
 esac
