@@ -23,9 +23,6 @@ bindsym $mod+n border normal
 # is used in the bar {} block below.
 font xft:monospace 11
 
-# Use Mouse+$mod to drag floating windows
-floating_modifier $mod
-
 # start a terminal
 bindsym $mod+Return exec urxvt
 
@@ -33,10 +30,7 @@ bindsym $mod+Return exec urxvt
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id dmenu_recency
-
-# launch categorized menu
-bindsym $mod+z exec --no-startup-id morc_menu
+bindsym $mod+r exec --no-startup-id $(dmenu_path | dmenu -i -p "Run:")
 
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
@@ -50,23 +44,8 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 
 ################################################################################################
 
-# Screen brightness controls
-# bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-# bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
-
-# Start Applications
-bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
-# bindsym $mod+F3 exec ranger
-bindsym $mod+F5 exec terminal -e 'mocp'
-#bindsym $mod+t exec --no-startup-id pkill compton
-bindsym $mod+Ctrl+t exec --no-startup-id compton -b
-bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
-bindsym $mod+F4 exec --no-startup-id i3-scrot
-bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
-bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
+#bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
-
-# focus_follows_mouse no
 
 # change focus
 bindsym $mod+h focus left
@@ -74,23 +53,11 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
 # move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
 
 # workspace back and forth (with/without active container)
 workspace_auto_back_and_forth yes
@@ -98,9 +65,7 @@ bindsym $mod+b workspace back_and_forth
 bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 
 # split orientation
-bindsym $mod+shift+v split h;exec notify-send 'tile horizontally'
-bindsym $mod+v split v;exec notify-send 'tile vertically'
-bindsym $mod+q split toggle
+bindsym $mod+v split toggle
 
 # toggle fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -120,7 +85,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+Shift+s sticky toggle
 
 # focus the parent container
-#bindsym $mod+a focus parent
+bindsym $mod+a focus parent
 
 # move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -137,16 +102,16 @@ bindsym $mod+Ctrl+Left workspace prev
 # to display names or symbols instead of plain workspace numbers you can use
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
-set $ws1 1:  
-set $ws2 2:  
+set $ws1 1: 
+set $ws2 2: 
 set $ws3 3
 set $ws4 4
 set $ws5 5
 set $ws6 6
-set $ws7 7:  
-set $ws8 8:  
-set $ws9 9:  
-set $ws10 10:  
+set $ws7 7: 
+set $ws8 8: 
+set $ws9 9: 
+set $ws10 10: 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -205,14 +170,11 @@ for_window [class="GParted"] floating enable border normal
 for_window [title="i3_help"] floating enable sticky enable border normal
 for_window [class="Lightdm-settings"] floating enable
 for_window [class="Lxappearance"] floating enable sticky enable border normal
-for_window [class="Manjaro-hello"] floating enable
-for_window [class="Manjaro Settings Manager"] floating enable border normal
 for_window [title="MuseScore: Play Panel"] floating enable
 for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Oblogout"] fullscreen enable
 for_window [class="octopi"] floating enable
 for_window [title="About Pale Moon"] floating enable
-for_window [class="Pamac-manager"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="qt5ct"] floating enable sticky enable border normal
 for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
@@ -256,7 +218,7 @@ mode "$mode_system" {
 }
 #
 ## Resize window (you can also use the mouse for that)
-#bindsym $mod+r mode "resize"
+#bindsym $kod+r mode "resize"
 #mode "resize" {
         ## These bindings trigger as soon as you enter the resize mode
         ## Pressing left will shrink the window’s width.
@@ -290,7 +252,6 @@ bindsym $mod+shift+x exec --no-startup-id i3lock -i ~/wp1.png
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-#exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
@@ -337,17 +298,20 @@ set_from_resource $term_color15    color15
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
 	i3bar_command i3bar
-	status_command i3blocks
+    status_command i3blocks -c ~/.config/i3/i3blocks-awesome.conf
+    #status_command i3blocks -c ~/.config/i3/i3blocks-original.conf
+    #status_command i3bocks -c ~/.config/i3/i3blocks-rainbow.conf
+    #status_command i3block
 	position bottom
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
 #	tray_output primary
 #	tray_output eDP1
 
-	bindsym button4 nop
-	bindsym button5 nop
+	#bindsym button4 nop
+	#bindsym button5 nop
 #   font xft:URWGothic-Book 11
-	strip_workspace_numbers yes
+	#yesstrip_workspace_numbers no
 
     colors {
         background #222D31
@@ -360,8 +324,20 @@ bar {
         inactive_workspace #595B5B #222D31 #EEE8D5
         binding_mode       #16a085 #2C2C2C #F9FAF9
         urgent_workspace   #16a085 #FDF6E3 #E5201D
+
+        background #0d3642
+        statusline #839496
+        separator  #586e75
+        focused_workspace  #268bd2 #268bd2 #0d3642
+        active_workspace   #586e75 #586e75 #002b36
+        inactive_workspace #073642 #0d3642 #839496
+        urgent_workspace   #dc322f #dc322f #fdf6e3
+
     }
 }
+
+
+
 
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
@@ -395,6 +371,7 @@ smart_gaps on
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace) 
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
+#
 smart_borders on
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
@@ -441,8 +418,8 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Disk Mounting Commands
-bindsym $mod+F3 exec sudo dmount
-bindsym $mod+Shift+F3 exec sudo dumount
+bindsym $mod+d exec sudo dmount
+bindsym $mod+Shift+d exec sudo dumount
 
 # Open man pages
 bindsym $mod+Shift+m exec dman
@@ -452,7 +429,7 @@ bindsym $mod+F2 exec dsearch
 
 # Background
 exec urxvt
-exec --no-strtup-id nitrogen --set-zoom-fill /usr/share/backgrounds/Stalking_Ocelot_by_Sayantan_Chaudhuri.jpg
+exec nitrogen --set-zoom-fill /usr/share/backgrounds/Stalking_Ocelot_by_Sayantan_Chaudhuri.jpg
 exec firefox
 exec spotify
 exec mailspring
@@ -461,7 +438,6 @@ exec slack
 exec flameshot
 exec redshift
 exec station
-exec xfce4-power-manager
 
 for_window [instance="pythondrop"] floating enable
 for_window [instance="pythondrop"] resize set 625 300
@@ -478,3 +454,7 @@ for_window [instance="shell"] border pixel 5
 exec --no-startup-id urxvt -fg white -name shell 
 
 bindsym $mod+t [instance="shell"] scratchpad show; [instance="shell"] move position center
+
+bindsym $mod+Shift+p exec passmenu
+
+bindsym $mod+Shift+f focus
