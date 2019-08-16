@@ -13,4 +13,6 @@ if [[ ! -d "$mountpoint" ]]; then
     [[ "$shouldmkdir" = "Hayır" ]] && exit 0
     sudo mkdir -p "$mountpoint"
 fi
-sudo mount $choosen $mountpoint && /usr/bin/rootify "Bağlantı Sağlandı" "$choosen  >  $mountpoint "
+sudo mount $choosen $mountpoint 
+echo $mountpoint
+sudo chmod 777 -R "$mountpoint"
