@@ -16,4 +16,4 @@ fi
 sudo mount $choosen $mountpoint 
 echo $mountpoint
 sudo chown ahmedselim:ahmedselim -R $mountpoint
-sudo chmod 755 -R $mountpoint
+sudo chmod 700 -R $mountpoint
