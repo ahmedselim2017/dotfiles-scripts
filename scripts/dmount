@@ -15,4 +15,4 @@ if [[ ! -d "$mountpoint" ]]; then
 fi
 sudo mount $choosen $mountpoint 
 echo $mountpoint
-sudo chmod 777 -R "$mountpoint"
+sudo chown $USER:$USER -R $mountpoint
