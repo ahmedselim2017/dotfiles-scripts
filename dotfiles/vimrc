@@ -170,7 +170,7 @@ inoremap <Leader>[ []<esc>ha
 inoremap <Leader>" ""<esc>ha
 inoremap <Leader>' ''<esc>ha
 inoremap <Leader>` ``<esc>ha
-inoremap <Leader>> <><esc>ha
+inoremap <Leader>< <><esc>ha
 
 " Disable Arrow Keys
 nnoremap <Right> :echo "No right for you!"<CR>
@@ -210,17 +210,12 @@ nnoremap <Leader>rs :w<CR>:!./% <CR>
 " Saving as root
 cabbrev W w !sudo tee %
 
-" Latex to pdf
-command L !pdflatex %<CR><CR>
+" Place holders
+nmap <Space><Space> i<Esc>/<++><CR><CR>cf>
 
-" Add bibliography for latex
-command B !biber %:r <CR>
-
-" Shortcut of shorcuts
-command LB !pdflatex % && biber %:r <CR><CR>
-
-" Latex when autoclose a tag move cursor
-imap }} ]]<esc>:sleep 150m<cr>khi
+" Add placeholder
+nmap <Leader>+ i<++>
+imap <Leader>+ <++>
 
 " Add new line under current line without entering insert mode 
 nmap <Leader>o o<Esc>
@@ -240,21 +235,25 @@ set backspace=indent,eol,start
 " Json Format
 map <Leader>j :%!python -m json.tool<CR>
 
+" Latex
+" Make line block
+nmap üb 0d$i\begin{<C-R>"}<CR><++><CR>\end{<C-R>"}
+imap üb <Esc>üb
+
+" Make line section label
+nmap üs 0d$i\section{<C-R>"\label{<++>}}
+imap üs <Esc>üs
+
+" Make line subsection with label
+nmap üus 0d$i\subsection{<C-R>"\label{<++>}}
+imap üus <Esc>üus
+
 " Plugins
 call plug#begin('~/.vim/plugged')
 
-" Plug 'klen/python-mode'
-" set completeopt=longest,menuone
-" set foldlevelstart=10
-" 
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-
-" Plug 'szymonmaszke/vimpyter'
-
 Plug 'vim-airline/vim-airline'
 " air-line
-let g:airline_powerline_fonts = 1
-
+let g:airline_powerline_fonts = 1 
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
@@ -283,8 +282,9 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 Plug 'elzr/vim-json'
 
-Plug 'lervag/vimtex'
+"Plug 'lervag/vimtex'
 
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+let g:livepreview_previewer = 'zathura'
 
 call plug#end()

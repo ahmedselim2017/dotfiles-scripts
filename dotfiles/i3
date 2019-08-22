@@ -30,7 +30,7 @@ bindsym $mod+Return exec urxvt
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+r exec --no-startup-id $(dmenu_path | dmenu -i -p "Run:")
+bindsym $mod+d exec --no-startup-id $(dmenu_path | dmenu -i -p "Run:")
 
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
@@ -304,27 +304,10 @@ bar {
     #status_command i3block
 	position bottom
 
-## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
-#	tray_output primary
-#	tray_output eDP1
-
-	#bindsym button4 nop
-	#bindsym button5 nop
-#   font xft:URWGothic-Book 11
-	#yesstrip_workspace_numbers no
-
+    
     colors {
-        background #222D31
-        statusline #F9FAF9
-        separator  #454947
 
-#                      border  backgr. text
-        focused_workspace  #F9FAF9 #16a085 #292F34
-        active_workspace   #595B5B #353836 #FDF6E3
-        inactive_workspace #595B5B #222D31 #EEE8D5
-        binding_mode       #16a085 #2C2C2C #F9FAF9
-        urgent_workspace   #16a085 #FDF6E3 #E5201D
-
+#                           border  backgr. text
         background #0d3642
         statusline #839496
         separator  #586e75
@@ -338,9 +321,8 @@ bar {
 
 
 
-
 # hide/unhide i3status bar
-bindsym $mod+m bar mode toggle
+bindsym $mod+Shift+m bar mode toggle
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
@@ -411,18 +393,20 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
+mode "$mount" {
+    bindsym m exec sudo dmount
+    bindsym u exec sudo dumount
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
 # Media Player
 
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-# Disk Mounting Commands
-bindsym $mod+d exec sudo dmount
-bindsym $mod+Shift+d exec sudo dumount
-
-# Open man pages
-bindsym $mod+Shift+m exec dman
 
 # Open Searcher
 bindsym $mod+F2 exec dsearch
