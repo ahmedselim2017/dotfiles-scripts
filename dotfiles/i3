@@ -61,7 +61,7 @@ bindsym $mod+Shift+l move right
 
 # workspace back and forth (with/without active container)
 workspace_auto_back_and_forth yes
-bindsym $mod+b workspace back_and_forth
+bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 
 # split orientation
@@ -204,7 +204,7 @@ bindsym XF86PowerOff exec sudo dshutdown
 bindsym $mod+shift+w mode "$mode_system"
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id i3lock -i ~/wp1.png, mode "default"
+    bindsym l exec --no-startup-id i scrlock.sh ,  mode "default"
     bindsym s exec --no-startup-id i3exit suspend, mode "default"
     bindsym u exec --no-startup-id i3exit switch_user, mode "default"
     bindsym e exec --no-startup-id i3exit logout, mode "default"
@@ -248,7 +248,7 @@ bindcode $mod+Shift+31 resize grow height 5 px or 5 ppt
 bindsym $mod+Shift+o resize shrink width 5 px or 5 ppt
 
 # Lock screen
-bindsym $mod+shift+x exec --no-startup-id i3lock -i ~/wp1.png
+bindsym $mod+shift+x exec --no-startup-id scrlock.sh
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -413,7 +413,7 @@ bindsym $mod+F2 exec dsearch
 
 # Background
 exec urxvt
-exec nitrogen --set-zoom-fill /usr/share/backgrounds/Stalking_Ocelot_by_Sayantan_Chaudhuri.jpg
+exec nitrogen --set-zoom-fill $(ls ~/Pictures/Wallpapers/* | grep .png | sort -R | head -1)
 exec firefox
 exec flameshot
 exec redshift

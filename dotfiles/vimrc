@@ -35,7 +35,7 @@ endif
 
 " If using a dark background within the editing area and syntax highlighting
 " turn on this option as well
-" set background=dark
+" set background=light
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
@@ -51,7 +51,7 @@ set showcmd		" Show (partial) command in status line.
 set showmatch		" Show matching brackets.
 " set autowrite		" Automatically save before commands like :next and :make
 " set hidden		" Hide buffers when they are abandoned
-set mouse=n		" Enable mouse usage (all modes)
+set mouse=n		" Enable mouse usage (normal mode)
 
 " Source a global configuration file if available
 if filereadable("/etc/vim/vimrc.local")
@@ -62,14 +62,15 @@ endif
 " Custom Cofig
 " ==============
 
-" System Clipboard support
+" System Clipboard Support:
 set pastetoggle=<F2>
 set clipboard=unnamedplus
 
-" Remap <Leader> key
-let mapleader=","
+" Remap Leader Key:
+let mapleader="ö"
+let maplocalleader="ç"
 
-" Easier moving between tabs
+" Easier Moving Between Tabs:
 noremap <Leader>1 1gt
 noremap <Leader>2 2gt
 noremap <Leader>3 3gt
@@ -85,94 +86,149 @@ noremap <Leader>q :tabclose<CR>
 noremap <Leader>n :tabnext<CR>
 noremap <Leader>b :tabprevious<CR>
 
-inoremap <Leader>1 <Esc>1gt
-inoremap <Leader>2 <Esc>2gt
-inoremap <Leader>3 <Esc>3gt
-inoremap <Leader>4 <Esc>4gt
-inoremap <Leader>5 <Esc>5gt
-inoremap <Leader>6 <Esc>6gt
-inoremap <Leader>7 <Esc>7gt
-inoremap <Leader>8 <Esc>8gt
-inoremap <Leader>9 <Esc>9gt
-inoremap <Leader>0 <Esc>:tablast<CR>
-inoremap <Leader>t <Esc>:tabnew<CR>
-inoremap <Leader>q <Esc>:tabclose<CR>
-inoremap <Leader>n <Esc>:tabnext<CR>
-inoremap <Leader>b <Esc>:tabprevious<CR>
-
-" Easily sorting code
+" Easily Sorting Code:
 vnoremap <Leader>s :sort<CR>
 
-" Easier moving code
+" Easier Moving Code:
 vnoremap < <gv
 vnoremap > >gv
 
-" Open file explorer easily
-nnoremap - :<c-z>
-nnoremap _ :Texplore<CR>
-
-" More Secure Vimcryption
+" More Secure Vimcryption:
 set cryptmethod=blowfish
 
-" Comment lines easily
-inoremap <Leader>/ <Esc>0i// <Esc>$i
-inoremap <Leader># <Esc>0i## <Esc>$i
-inoremap <Leader>" <Esc>0i"" <Esc>$i
+" Status Line:
+" Thanks https://gist.github.com/ericbn/f2956cd9ec7d6bff8940c2087247b132----{{{
+set laststatus=2
+set statusline=
+set statusline+=%(%{&buflisted?bufnr('%'):''}\ \ %)
+set statusline+=%< " Truncate line here
+set statusline+=%f\  " File path, as typed or relative to current directory
+set statusline+=%{&modified?'+\ ':''}
+set statusline+=%{&readonly?'\ ':''}
+set statusline+=%= " Separation point between left and right aligned items
+set statusline+=\ %{&filetype!=#''?&filetype:'none'}
+set statusline+=%(\ %{(&bomb\|\|&fileencoding!~#'^$\\\|utf-8'?'\ '.&fileencoding.(&bomb?'-bom':''):'')
+  \.(&fileformat!=#(has('win32')?'dos':'unix')?'\ '.&fileformat:'')}%)
+set statusline+=%(\ \ %{&modifiable?(&expandtab?'et\ ':'noet\ ').&shiftwidth:''}%)
+set statusline+=\ 
+set statusline+=\ %{&number?'':printf('%2d,',line('.'))} " Line number
+set statusline+=%-2v " Virtual column number
+set statusline+=\ %2p%% " Percentage through file in lines as in |CTRL-G|
 
-" Enable syntax highlighting
+" ------------------------ 8< ------------------------
+
+" Statusline with highlight groups (requires Powerline font, using Solarized theme)
+set statusline=
+set statusline+=%(%{&buflisted?bufnr('%'):''}\ \ %)
+set statusline+=%< " Truncate line here
+set statusline+=%f\  " File path, as typed or relative to current directory
+set statusline+=%{&modified?'+\ ':''}
+set statusline+=%{&readonly?'\ ':''}
+set statusline+=%1*\  " Set highlight group to User1
+set statusline+=%= " Separation point between left and right aligned items
+set statusline+=\ %{&filetype!=#''?&filetype:'none'}
+set statusline+=%(\ %{(&bomb\|\|&fileencoding!~#'^$\\\|utf-8'?'\ '.&fileencoding.(&bomb?'-bom':''):'')
+  \.(&fileformat!=#(has('win32')?'dos':'unix')?'\ '.&fileformat:'')}%)
+set statusline+=%(\ \ %{&modifiable?(&expandtab?'et\ ':'noet\ ').&shiftwidth:''}%)
+set statusline+=\ %* " Restore normal highlight
+set statusline+=\ %{&number?'':printf('%2d,',line('.'))} " Line number
+set statusline+=%-2v " Virtual column number
+set statusline+=\ %2p%% " Percentage through file in lines as in |CTRL-G|
+
+hi StatusLine cterm=reverse gui=reverse ctermfg=14 ctermbg=0 guifg=#93a1a1 guibg=#002732
+hi StatusLineNC cterm=reverse gui=reverse ctermfg=11 ctermbg=0 guifg=#657b83 guibg=#073642
+hi User1 ctermfg=14 ctermbg=0 guifg=#93a1a1 guibg=#073642
+" }}}
+
+" Comment Lines Easily:
+augroup comment
+    autocmd!
+    autocmd FileType python,sh,zsh,bash nnoremap <buffer> <LocalLeader>c mqI# <Esc>'q
+    autocmd FileType tex nnoremap  <buffer> <LocalLeader>c mqI% <Esc>$'q
+    autocmd FileType vimrc nnoremap <buffer> <LocalLeader>c mqI" <Esc>'q
+augroup END
+
+" Folding:
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+augroup END
+
+" Enable Syntax Highlighting:
 filetype off
 filetype plugin indent on
 
-" Enable line numbers and line lenght
+" Enable Line Numbers And Line Lenght:
 set number         " show line numbers
+set relativenumber
 set tw=79          " width of the document(used by gd)
 set nowrap         " don't automatically wrap on lad
 set fo -=t         " don't automatically wrap text when typing
 set colorcolumn=80
 highlight ColorColumn ctermbg=1
 
-" Useful things
+" Fuzzy Search:
+set path+=**
+set wildmenu
+
+" Useful Things:
 set history=1000
 set undolevels=1000
-set title                
+set title
 nnoremap <CR> :noh<CR>
 
-" Tabs
+" Tabs:
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set shiftround
 set expandtab
 
-" Delete without yank
-map <Leader>d "_d
-map <Leader>D "_D
-map <Leader>x "_x
-map <Leader>X "_X
+" Delete Without Yank:
+nnoremap <Leader>d "_d
+nnoremap <Leader>D "_D
+nnoremap <Leader>x "_x
+nnoremap <Leader>X "_X
 
-" Change witouth yank
-map <Leader>c "_c
-map <Leader>C "_C
-
-" Make search case insensitive
+" Make Search Case Insensitive:
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
 
-" Visial mode shortcuts
-noremap vv ve
+" Vertical split char:
+set fillchars+=vert:\|
+hi! VertSplit ctermfg=0 ctermbg=5
 
-" Autoclose
-inoremap <Leader>( ()<esc>ha
-inoremap <Leader>{ {}<esc>ha
-inoremap <Leader>[ []<esc>ha
-inoremap <Leader>" ""<esc>ha
-inoremap <Leader>' ''<esc>ha
-inoremap <Leader>` ``<esc>ha
-inoremap <Leader>< <><esc>ha
+" Autoclose:
+inoremap <Leader>( ()<Esc>ha
+inoremap <Leader>{ {}<Esc>ha
+inoremap <Leader>[ []<Esc>ha
+inoremap <Leader>" ""<Esc>ha
+inoremap <Leader>' ''<Esc>ha
+inoremap <Leader>` ``<Esc>ha
+inoremap <Leader>< <><Esc>ha
+inoremap <Leader>$ $$<Esc>ha
 
-" Disable Arrow Keys
+" Change Next:
+onoremap in( :<C-U>normal! f(vi(<CR>
+onoremap in{ :<C-U>normal! f{vi{<CR>
+onoremap in[ :<C-U>normal! f[vi[<CR>
+onoremap in" :<C-U>normal! f"vi"<CR>
+onoremap in' :<C-U>normal! f'vi'<CR>
+onoremap in` :<C-U>normal! f`vi`<CR>
+onoremap in< :<C-U>normal! f<vi<<CR>
+
+" Change Last:
+onoremap il( :<C-U>normal! F(vi(<CR>
+onoremap il{ :<C-U>normal! F{vi{<CR>
+onoremap il[ :<C-U>normal! F[vi[<CR>
+onoremap il" :<C-U>normal! F"vi"<CR>
+onoremap il' :<C-U>normal! F'vi'<CR>
+onoremap il` :<C-U>normal! F`vi`<CR>
+onoremap il< :<C-U>normal! F<vi<<CR>
+
+" Disable Arrow Keys:
 nnoremap <Right> :echo "No right for you!"<CR>
 vnoremap <Right> :<C-u>echo "No right for you!"<CR>
 inoremap<Right> <C-o>:echo "No right for you!"<CR>
@@ -189,102 +245,122 @@ nnoremap <Down> :echo "No down for you!"<CR>
 vnoremap <Down> :<C-u>echo "No down  for you!"<CR>
 inoremap <Down> <C-o>:echo "No down for you!"<CR>
 
-" Add new keys instead of arrow keys
+" Add New Keys Instead Of Arrow Keys:
 inoremap <c-l> <Right>
 inoremap <c-h> <Left>
 inoremap <c-k> <Up>
 inoremap <c-j> <Down>
 
-" Easily move between windows
-noremap <c-h> <c-w>h
-noremap <c-j> <c-w>j
-noremap <c-k> <c-w>k
-noremap <c-l> <c-w>l
-
-" Save and run Python Code
-nnoremap <Leader>rp :w<CR>:!python %<CR>
-
-" Save and run Shell Code
-nnoremap <Leader>rs :w<CR>:!./% <CR>
-
-" Saving as root
+" Saving As Root:
 cabbrev W w !sudo tee %
 
-" Place holders
-nmap <Space><Space> i<Esc>/<++><CR><CR>cf>
+" Highlight Trailing Spaces:
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
 
-" Add placeholder
-nmap <Leader>+ i<++>
-imap <Leader>+ <++>
+" Place Holders:
+nnoremap <Space><Space> 0/<++><CR>:noh<Esc>cf>
+nnoremap <Tab><Tab> 0?<++><CR>:nohcf>
 
-" Add new line under current line without entering insert mode 
-nmap <Leader>o o<Esc>
+inoremap <Leader><Space><Space> <Esc>0/<++><CR>:noh<CR>cf>
+inoremap <Leader><Tab><Tab> <Esc>0?<++><CR>:noh<CR>cf>
 
-" Add new line above current line without entering insert mode
-nmap <Leader>O O<Esc>
+" Grep:
+source /home/ahmedselim/.vim/plugin/grep-operator.vim
 
-" Easily go to normal mode
-imap ff <esc>
+" Add Placeholder:
+nnoremap <Leader>+ i<++>
+inoremap <Leader>+ <++>
 
-" Easily quit all
+" Add New Line Under Current Line Without Entering Insert Mode:
+nnoremap <Leader>o o<Esc>
+
+" Add New Line Above Current Line Without Entering Insert Mode:
+nnoremap <Leader>O O<Esc>
+
+" Easily Go To Normal Mode:
+inoremap jk <Esc>
+
+" Easily Quit All:
 comman Q quitall!
 
-" Fix backspace key
-set backspace=indent,eol,start 
+" Fix Backspace Key:
+set backspace=indent,eol,start
 
-" Json Format
-map <Leader>j :%!python -m json.tool<CR>
+" Json Format:
+noremap <Leader>j :%!python -m json.tool<CR>
 
-" Latex
-" Make line block
-nmap üb 0d$i\begin{<C-R>"}<CR><++><CR>\end{<C-R>"}
-imap üb <Esc>üb
+" Convert Word To Capital Case:
+nnoremap <Leader>u mqbgUl`q
+inoremap <Leader>u <Esc><Leader>u
 
-" Make line section label
-nmap üs 0d$i\section{<C-R>"\label{<++>}}
-imap üs <Esc>üs
+" Edit Vimrc Easily:
+nnoremap <Leader>ve :tabnew<CR>:e $MYVIMRC<CR>
 
-" Make line subsection with label
-nmap üus 0d$i\subsection{<C-R>"\label{<++>}}
-imap üus <Esc>üus
+" Reload Vimrc:
+nnoremap <leader>vs :source $MYVIMRC<cr>
 
-" Plugins
+" Auto Save File When First Time Editing:
+augroup auto_save
+    autocmd BufNewFile * :write
+augroup END
+
+" Abbreviations:
+iabbrev iimza -- <CR>Ahmed Selim Üzüm<CR>ahmedselimuzum@gmail.com
+
+set encoding=UTF-8
+
+" File Browser:
+let g:netrw_liststyle = 3
+let g:netrw_banner = 0
+let g:netrw_browse_split = 4
+let g:netrw_winsize = 15
+let g:netrw_altv = 1
+augroup ProjectDrawer
+  autocmd!
+  autocmd VimEnter * :Vexplore | execute "normal \<C-W>l"
+augroup END
+
+" Latex:
+
+augroup filetype_tex
+    autocmd!
+    " Make Line Block:
+    autocmd filetype tex nnoremap <LocalLeader>b YpkI\begin{<ESC>A}<ESC>jI\end{<ESC>A}<esc>kA
+    autocmd filetype tex inoremap <LocalLeader>b <Esc>YpkI\begin{<ESC>A}<ESC>jI\end{<ESC>A}<esc>kA
+
+    " Makemini Pages:
+    autocmd filetype tex nnoremap <LocalLeader>mmp i\begin{minipage}{.<++>\linewidth}<CR><++><CR>\end{minipage}<Esc>kk
+    autocmd filetype tex inoremap <LocalLeader>mmp \begin{minipage}{.<++>\linewidth}<CR><++><CR>\end{minipage}<Esc>kk
+
+    " Make Line Subsection With Label:
+    autocmd filetype tex nnoremap <LocalLeader>us 0d$i\subsection{<C-R>"\label{<++>}}<C-O>0
+    autocmd filetype tex inoremap <LocalLeader>us <Esc>0d$i\subsection{<C-R>"\label{<++>}}<C-O>0
+
+    " Make Boxes:
+    autocmd filetype tex nnoremap <LocalLeader>mb i\makebox[<++>][<++>]{<++>}<Esc>0
+    autocmd filetype tex inoremap <LocalLeader>mb \makebox[<++>][<++>]{<++>}<Esc>0
+
+    " Autocomplete Support:
+    autocmd filetype tex set dictionary+=/home/ahmedselim/.vim/dictionaries/dictionary_tex
+
+    " Draw Lines:
+    autocmd filetype tex nnoremap <LocalLeader>dl i\draw[<++>] (<++>) -- (<++>) <++>;<Esc>0
+    autocmd filetype tex inoremap <LocalLeader>dl \draw[<++>] (<++>) -- (<++>) <++>;<Esc>0
+
+    " Draw Grid
+    autocmd filetype tex nnoremap <LocalLeader>dg i\begin{tikzpicture}<CR>\draw[thin, gray!40] (<++>) grid (<++>);<CR><++><CR>\end{tikzpicture}<Esc>kk
+    autocmd filetype tex inoremap <LocalLeader>dg \begin{tikzpicture}<CR>\draw[thin, gray!40] (<++>) grid (<++>);<CR><++><CR>\end{tikzpicture}<Esc>kk
+augroup END
+" Plugins:
 call plug#begin('~/.vim/plugged')
-
-Plug 'vim-airline/vim-airline'
-" air-line
-let g:airline_powerline_fonts = 1 
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-
-" unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
-
-" airline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
-Plug 'elzr/vim-json'
-
-"Plug 'lervag/vimtex'
 
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 let g:livepreview_previewer = 'zathura'
+
+" Plug 'scrooloose/nerdtree'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
+
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
