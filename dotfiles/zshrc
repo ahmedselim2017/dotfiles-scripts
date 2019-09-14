@@ -81,7 +81,10 @@ alias q='exit'
 alias 'cd..'='cd ..'
 alias pis='pip install'
 alias calc='qalc'
-alias tb="nc termbin.com 9999"  
+alias tb="nc termbin.com 9999"
+alias jk="fg"
+alias pacro="/usr/bin/pacman -Qtdq > /dev/null && sudo /usr/bin/pacman -Rns \$(/usr/bin/pacman -Qtdq | sed -e ':a;N;$!ba;s/\n/ /g')"
+alias yoket="pkill -9"
 
 # Git
 alias g="git"
@@ -121,4 +124,6 @@ fi
 #unset __conda_setup
 # <<< conda initialize <<<
 
-echo 'Follow the white rabbit, '$USER 
+# echo 'Follow the white rabbit, '$USER
+echo "Follow the white rabbit,\n$USER" | toilet --font future
+

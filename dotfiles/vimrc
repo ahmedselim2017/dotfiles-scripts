@@ -148,6 +148,12 @@ augroup comment
     autocmd FileType vimrc nnoremap <buffer> <LocalLeader>c mqI" <Esc>'q
 augroup END
 
+" Run Files:
+augroup run
+    autocmd!
+    autocmd FileType python nnoremap <buffer> <LocalLeader>r :execute "!python " . resolve(expand('%:p')) <CR>
+augroup END
+
 " Folding:
 augroup filetype_vim
     autocmd!
@@ -161,7 +167,7 @@ filetype plugin indent on
 " Enable Line Numbers And Line Lenght:
 set number         " show line numbers
 set relativenumber
-set tw=79          " width of the document(used by gd)
+" set tw=79          " width of the document(used by gd)
 set nowrap         " don't automatically wrap on lad
 set fo -=t         " don't automatically wrap text when typing
 set colorcolumn=80
@@ -321,7 +327,27 @@ augroup ProjectDrawer
   autocmd VimEnter * :Vexplore | execute "normal \<C-W>l"
 augroup END
 
+" Markdown:
+augroup filetype_md
+    autocmd!
+    autocmd filetype markdown :silent TableModeEnable
+augroup END
+
 " Latex:
+
+function Compile_pdf()
+    write
+    let a = system("ps ax | grep \"" . " mupdf ". expand('%:r') . "\" | grep -vc grep")
+    if a
+        execute "silent !pdflatex %"
+        execute "silent !pkill -HUP mupdf"
+    else
+        call system()
+        execute "silent !pdflatex %"
+        execute "silent !mupdf " . expand("%:r") . ".pdf &"
+    endif
+    redraw!
+endfunction
 
 augroup filetype_tex
     autocmd!
@@ -348,19 +374,18 @@ augroup filetype_tex
     autocmd filetype tex nnoremap <LocalLeader>dl i\draw[<++>] (<++>) -- (<++>) <++>;<Esc>0
     autocmd filetype tex inoremap <LocalLeader>dl \draw[<++>] (<++>) -- (<++>) <++>;<Esc>0
 
-    " Draw Grid
+    " Draw Grid:
     autocmd filetype tex nnoremap <LocalLeader>dg i\begin{tikzpicture}<CR>\draw[thin, gray!40] (<++>) grid (<++>);<CR><++><CR>\end{tikzpicture}<Esc>kk
     autocmd filetype tex inoremap <LocalLeader>dg \begin{tikzpicture}<CR>\draw[thin, gray!40] (<++>) grid (<++>);<CR><++><CR>\end{tikzpicture}<Esc>kk
+
+    " Compile File:
+    autocmd filetype tex nnoremap <LocalLeader>r :call Compile_pdf()<CR>
+    autocmd filetype tex inoremap <LocalLeader>r <ESC>:call Compile_pdf()<CR>
 augroup END
 " Plugins:
 call plug#begin('~/.vim/plugged')
 
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-let g:livepreview_previewer = 'zathura'
 
-" Plug 'scrooloose/nerdtree'
-" Plug 'Xuyuanp/nerdtree-git-plugin'
-
-Plug 'ryanoasis/vim-devicons'
+Plug 'dhruvasagar/vim-table-mode'
 
 call plug#end()

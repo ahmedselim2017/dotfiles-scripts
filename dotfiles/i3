@@ -136,12 +136,7 @@ bindsym $mod+Ctrl+8 move container to workspace $ws8
 bindsym $mod+Ctrl+9 move container to workspace $ws9
 bindsym $mod+Ctrl+0 move container to workspace $ws10
 
-for_window [class="Spotify"] move to workspace $ws10
 for_window [class="Firefox"] move to workspace $ws2
-for_window [class="Mailspring"] move to workspace $ws9
-for_window [class="Station"] move to workspace $ws7
-for_window [class="Slack"] move to workspace $ws8
-
 
 # Move to workspace with focused container
 bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
@@ -182,7 +177,6 @@ for_window [class="Simple-scan"] floating enable border normal
 for_window [class="(?i)System-config-printer.py"] floating enable border normal
 for_window [class="Skype"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
-for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
 
 # switch to workspace with urgent window automatically
@@ -304,7 +298,7 @@ bar {
     #status_command i3block
 	position bottom
 
-    
+ 
     colors {
 
 #                           border  backgr. text
@@ -423,7 +417,7 @@ for_window [instance="pythondrop"] floating enable
 for_window [instance="pythondrop"] resize set 625 300
 for_window [instance="pythondrop"] move scratchpad
 for_window [instance="pythondrop"] border pixel 5
-exec --no-startup-id urxvt -fg white -name pythondrop -e python -q
+exec --no-startup-id urxvt -name pythondrop -e python -q
 
 bindsym $mod+p [instance="pythondrop"] scratchpad show; [instance="pythondrop"] move position center
 
@@ -431,7 +425,7 @@ for_window [instance="shell"] floating enable
 for_window [instance="shell"] resize set 625 300
 for_window [instance="shell"] move scratchpad
 for_window [instance="shell"] border pixel 5
-exec --no-startup-id urxvt -fg white -name shell 
+exec --no-startup-id urxvt -name shell
 
 bindsym $mod+t [instance="shell"] scratchpad show; [instance="shell"] move position center
 
