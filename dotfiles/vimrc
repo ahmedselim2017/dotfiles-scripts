@@ -97,27 +97,8 @@ vnoremap > >gv
 set cryptmethod=blowfish
 
 " Status Line:
-" Thanks https://gist.github.com/ericbn/f2956cd9ec7d6bff8940c2087247b132----{{{
+" Thanks https://gist.github.com/ericbn/f2956cd9ec7d6bff8940c2087247b132----
 set laststatus=2
-set statusline=
-set statusline+=%(%{&buflisted?bufnr('%'):''}\ \ %)
-set statusline+=%< " Truncate line here
-set statusline+=%f\  " File path, as typed or relative to current directory
-set statusline+=%{&modified?'+\ ':''}
-set statusline+=%{&readonly?'\ ':''}
-set statusline+=%= " Separation point between left and right aligned items
-set statusline+=\ %{&filetype!=#''?&filetype:'none'}
-set statusline+=%(\ %{(&bomb\|\|&fileencoding!~#'^$\\\|utf-8'?'\ '.&fileencoding.(&bomb?'-bom':''):'')
-  \.(&fileformat!=#(has('win32')?'dos':'unix')?'\ '.&fileformat:'')}%)
-set statusline+=%(\ \ %{&modifiable?(&expandtab?'et\ ':'noet\ ').&shiftwidth:''}%)
-set statusline+=\ 
-set statusline+=\ %{&number?'':printf('%2d,',line('.'))} " Line number
-set statusline+=%-2v " Virtual column number
-set statusline+=\ %2p%% " Percentage through file in lines as in |CTRL-G|
-
-" ------------------------ 8< ------------------------
-
-" Statusline with highlight groups (requires Powerline font, using Solarized theme)
 set statusline=
 set statusline+=%(%{&buflisted?bufnr('%'):''}\ \ %)
 set statusline+=%< " Truncate line here
@@ -134,6 +115,7 @@ set statusline+=\ %* " Restore normal highlight
 set statusline+=\ %{&number?'':printf('%2d,',line('.'))} " Line number
 set statusline+=%-2v " Virtual column number
 set statusline+=\ %2p%% " Percentage through file in lines as in |CTRL-G|
+
 
 hi StatusLine cterm=reverse gui=reverse ctermfg=14 ctermbg=0 guifg=#93a1a1 guibg=#002732
 hi StatusLineNC cterm=reverse gui=reverse ctermfg=11 ctermbg=0 guifg=#657b83 guibg=#073642
@@ -306,86 +288,129 @@ nnoremap <Leader>ve :tabnew<CR>:e $MYVIMRC<CR>
 " Reload Vimrc:
 nnoremap <leader>vs :source $MYVIMRC<cr>
 
-" Auto Save File When First Time Editing:
-augroup auto_save
-    autocmd BufNewFile * :write
-augroup END
-
 " Abbreviations:
 iabbrev iimza -- <CR>Ahmed Selim Üzüm<CR>ahmedselimuzum@gmail.com
 
 set encoding=UTF-8
 
-" File Browser:
-let g:netrw_liststyle = 3
-let g:netrw_banner = 0
-let g:netrw_browse_split = 4
-let g:netrw_winsize = 15
-let g:netrw_altv = 1
-augroup ProjectDrawer
-  autocmd!
-  autocmd VimEnter * :Vexplore | execute "normal \<C-W>l"
-augroup END
-
-" Markdown:
-augroup filetype_md
+"" File Browser:
+"let g:netrw_liststyle = 3
+"let g:netrw_banner = 0
+"let g:netrw_browse_split = 4
+"let g:netrw_winsize = 15
+"let g:netrw_altv = 1
+"augroup ProjectDrawer
+  "autocmd!
+  "autocmd VimEnter * if &ft !=? "tex" | :Vexplore | execute "normal \<C-W>l" | endif
+"augroup END
+"
+" Fixing the cursor:
+augroup fix_cursor
     autocmd!
-    autocmd filetype markdown :silent TableModeEnable
+    autocmd VimEnter * silent exec "! echo -ne '\e[1 q'"
+    autocmd VimLeave * silent exec "! echo -ne '\e[5 q'"
 augroup END
 
 " Latex:
 
-function Compile_pdf()
+function Is_beamer()
+    if search("documentclass{beamer}")
+        return 1
+    endif
+    return 0
+endfunction
+
+function Compile_pdf(should_stop)
     write
-    let a = system("ps ax | grep \"" . " mupdf ". expand('%:r') . "\" | grep -vc grep")
-    if a
-        execute "silent !pdflatex %"
-        execute "silent !pkill -HUP mupdf"
+    normal mi
+    if a:should_stop
+        execute "silent !pdflatex -interaction=nonstopmode %"
     else
-        call system()
         execute "silent !pdflatex %"
-        execute "silent !mupdf " . expand("%:r") . ".pdf &"
+    endif
+
+    let l:is_beamer = Is_beamer()
+    if l:is_beamer | let l:pdf_viewer = "mupdf" | else | let l:pdf_viewer = "zathura" | endif
+    let l:is_open = system("ps ax | grep \" " . l:pdf_viewer . " " . expand('%:r') . "\" | grep -vc grep")
+
+    if l:is_open
+        if l:is_beamer
+            execute "silent !pkill -HUP mupdf"
+        endif
+    else
+        execute "silent ! " . l:pdf_viewer . " " . expand("%:r") . ".pdf &"
     endif
     redraw!
+    normal `i
+endfunction
+
+function Toggle_autocompile(is_auto_compiling_enabled)
+    let l:is_enabled = a:is_auto_compiling_enabled
+    if l:is_enabled
+        autocmd! auto_compile
+        let l:is_enabled=0
+    else
+        augroup compiling_when_save
+            autocmd!
+            autocmd BufWritePost *.tex :call Compile_pdf(1)
+        augroup end
+        let l:is_enabled=1
+    endif
+    return l:is_enabled
 endfunction
 
 augroup filetype_tex
     autocmd!
-    " Make Line Block:
-    autocmd filetype tex nnoremap <LocalLeader>b YpkI\begin{<ESC>A}<ESC>jI\end{<ESC>A}<esc>kA
-    autocmd filetype tex inoremap <LocalLeader>b <Esc>YpkI\begin{<ESC>A}<ESC>jI\end{<ESC>A}<esc>kA
-
-    " Makemini Pages:
-    autocmd filetype tex nnoremap <LocalLeader>mmp i\begin{minipage}{.<++>\linewidth}<CR><++><CR>\end{minipage}<Esc>kk
-    autocmd filetype tex inoremap <LocalLeader>mmp \begin{minipage}{.<++>\linewidth}<CR><++><CR>\end{minipage}<Esc>kk
-
-    " Make Line Subsection With Label:
-    autocmd filetype tex nnoremap <LocalLeader>us 0d$i\subsection{<C-R>"\label{<++>}}<C-O>0
-    autocmd filetype tex inoremap <LocalLeader>us <Esc>0d$i\subsection{<C-R>"\label{<++>}}<C-O>0
-
     " Make Boxes:
-    autocmd filetype tex nnoremap <LocalLeader>mb i\makebox[<++>][<++>]{<++>}<Esc>0
-    autocmd filetype tex inoremap <LocalLeader>mb \makebox[<++>][<++>]{<++>}<Esc>0
+    autocmd filetype tex nnoremap <buffer> <LocalLeader>ib i\makebox[<++>][<++>]{<++>}<Esc>0
+    autocmd filetype tex inoremap <buffer> <LocalLeader>ib \makebox[<++>][<++>]{<++>}<Esc>0
+
+    " Insert New Item:
+    autocmd filetype tex nnoremap <buffer> <LocalLeader>ii o\item 
+    autocmd filetype tex inoremap <buffer> <LocalLeader>ii <Esc>o\item 
+
 
     " Autocomplete Support:
-    autocmd filetype tex set dictionary+=/home/ahmedselim/.vim/dictionaries/dictionary_tex
+    autocmd filetype tex setlocal dictionary+=/home/ahmedselim/.vim/dictionaries/dictionary_tex
 
-    " Draw Lines:
-    autocmd filetype tex nnoremap <LocalLeader>dl i\draw[<++>] (<++>) -- (<++>) <++>;<Esc>0
-    autocmd filetype tex inoremap <LocalLeader>dl \draw[<++>] (<++>) -- (<++>) <++>;<Esc>0
+    " Insert Lines:
+    autocmd filetype tex nnoremap <buffer> <LocalLeader>il i\draw[<++>] (<++>) -- (<++>) <++>;<Esc>0
+    autocmd filetype tex inoremap <buffer> <LocalLeader>il \draw[<++>] (<++>) -- (<++>) <++>;<Esc>0
 
-    " Draw Grid:
-    autocmd filetype tex nnoremap <LocalLeader>dg i\begin{tikzpicture}<CR>\draw[thin, gray!40] (<++>) grid (<++>);<CR><++><CR>\end{tikzpicture}<Esc>kk
-    autocmd filetype tex inoremap <LocalLeader>dg \begin{tikzpicture}<CR>\draw[thin, gray!40] (<++>) grid (<++>);<CR><++><CR>\end{tikzpicture}<Esc>kk
+    " Insert Grid:
+    autocmd filetype tex nnoremap <buffer> <LocalLeader>ig i\begin{tikzpicture}<CR>\draw[thin, gray!40] (<++>) grid (<++>);<CR><++><CR>\end{tikzpicture}<Esc>kk
+    autocmd filetype tex inoremap <buffer> <LocalLeader>ig \begin{tikzpicture}<CR>\draw[thin, gray!40] (<++>) grid (<++>);<CR><++><CR>\end{tikzpicture}<Esc>kk
 
-    " Compile File:
-    autocmd filetype tex nnoremap <LocalLeader>r :call Compile_pdf()<CR>
-    autocmd filetype tex inoremap <LocalLeader>r <ESC>:call Compile_pdf()<CR>
+    " Compiling:
+    autocmd filetype tex let b:is_compiling_enabled=1
+    autocmd filetype tex nnoremap <buffer> <localleader>r :call Compile_pdf(0)<cr>
+    autocmd filetype tex inoremap <buffer> <localleader>r <esc>:call Compile_pdf(0)<cr>
+
+    " Wrapping:
+    autocmd filetype tex set wrap
+    autocmd filetype tex nnoremap <buffer> k gk
+    autocmd filetype tex nnoremap <buffer> j gj
+
+    " Auto Compile Toggle:
+    autocmd filetype tex let b:should_auto_compile = 1
+    autocmd filetype tex nnoremap <localleader>tr :let b:should_auto_compile = Toggle_autocompile(b:should_auto_compile) <CR>
 augroup END
-" Plugins:
+
+augroup auto_compile
+    autocmd!
+    autocmd BufWritePost *.tex :call Compile_pdf(1)
+augroup end
+
 call plug#begin('~/.vim/plugged')
 
-
-Plug 'dhruvasagar/vim-table-mode'
+Plug 'sirver/ultisnips'
 
 call plug#end()
+
+" Ultisnips:
+let g:UltiSnipsSnippetDirectories=[$HOME.'/UltiSnips']
+let g:UltiSnipsUsePythonVersion = 3
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'

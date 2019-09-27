@@ -1,19 +1,10 @@
 !Font
 
-URxvt.font: xft:UbuntuMono Nerd Font:size=11, \
-           xft:Inconsolata Nerd Font Mono:size=11, \
-           xft:DejaVuSansMono Nerd Font:size=11, \
-           xft:DroidSansMono Nerd Font:size=11, \
-           xft:Inconsolata for Powerline:size=10:style=Medium, \
-           xft:FuraMono Nerd Font:size=11, \
-           xft:RobotoMono Nerd Font:size=11, \
-           xft:Noto Sans Mono:size=11, \
-           xft:Monospace:style=Medium:size=11,\
-           xft:Meslo LG L Regular Nerd Font Complete Mono:style=RegularForPowerline:size=11, \
-           xft:Meslo LG S Regular Nerd Font Complete.otf: MesloLGS Nerd Font:style=RegularForPowerline:size=11, \
-           xft:Overpass Mono Nerd Font:style=Regular:size=12, \
-           xft:Mononoki Nerd Font:style=Regular:size=12, \
-           xtf:Braille:style=Regular:size=12
+!URxvt.font: xft:UbuntuMono Nerd Font:size=11, xft:Inconsolata Nerd Font Mono:size=11, \
+
+!URxvt.font:    xft:Fantasque\ Sans\ Mono:size=12:style=bold:antialias=true
+!URxvt.font:  xft:Source Code Pro Semibold:size=11
+URxvt.font: xft:xos4 Terminus:style=Regular:size=12
 
 URxvt.letterSpace: -0.5
 

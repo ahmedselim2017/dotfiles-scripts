@@ -1,34 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Path to your oh-my-zsh installation.
-export ZSH="/home/ahmedselim/.oh-my-zsh"
-
 export EDITOR="/usr/bin/vim"
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
-
-# Uncomment the following line to change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
 
 HIST_STAMPS="dd/mm/yyyy"
 HISTFILE="$HOME/.zsh_history"
@@ -43,22 +15,7 @@ setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording en
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
-plugins=(
-    git
-    zsh-autosuggestions
-    z
-)
-
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-
 # Aliases
-
 # Configs
 alias i3config="vim ~/dotfiles-scripts/dotfiles/i3"
 alias vimconfig="vim ~/dotfiles-scripts/dotfiles/vimrc"
@@ -72,19 +29,16 @@ alias cls="command clear; ls"
 alias rf="rm -rf"
 alias s="sudo "
 alias mkd='mkdir -pv'
-alias smkd="sudo mkdir -pv"
-alias btw="neofetch"
-alias jpy="jupyter notebook"
 alias haydaa='s $(fc -ln -1)'
-alias yaa='sudo pacman -Ss $(fc -ln -1)'
 alias q='exit'
 alias 'cd..'='cd ..'
-alias pis='pip install'
-alias calc='qalc'
 alias tb="nc termbin.com 9999"
 alias jk="fg"
 alias pacro="/usr/bin/pacman -Qtdq > /dev/null && sudo /usr/bin/pacman -Rns \$(/usr/bin/pacman -Qtdq | sed -e ':a;N;$!ba;s/\n/ /g')"
 alias yoket="pkill -9"
+alias weather="curl wttr.in"
+alias ls="ls --color=auto"
+alias chwp="nitrogen --set-zoom-fill --random /home/ahmedselim/Pictures/Wallpapers/"
 
 # Git
 alias g="git"
@@ -98,8 +52,6 @@ alias gca="git commit -am"
 # Vim
 alias vi="vim"
 alias v="vim"
-
-#Executable Files
 
 export TERM='xterm-256color'
 
@@ -124,6 +76,67 @@ fi
 #unset __conda_setup
 # <<< conda initialize <<<
 
-# echo 'Follow the white rabbit, '$USER
-echo "Follow the white rabbit,\n$USER" | toilet --font future
+ufetch
+
+# Enable colors and change prompt:
+autoload -U colors && colors
+PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+
+# Basic auto/tab complete:
+autoload -U compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots)		# Include hidden files.
+
+# ^e to editcommand with vim
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
+
+# reverse search
+bindkey '^R' history-incremental-search-backward
+
+# better search with arrow keys
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search # Up
+bindkey "^[[B" down-line-or-beginning-search # Down
+
+# Use vim keys in tab complete menu:
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -v '^?' backward-delete-char
+
+# vi mode
+bindkey -v
+export KEYTIMEOUT=1
+
+# Change cursor shape for different vi modes.
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+     [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'
+  elif [[ ${KEYMAP} == main ]] ||
+       [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} = '' ]] ||
+       [[ $1 = 'beam' ]]; then
+    echo -ne '\e[5 q'
+  fi
+}
+zle -N zle-keymap-select
+zle-line-init() {
+    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+    echo -ne "\e[5 q"
+}
+zle -N zle-line-init
+echo -ne '\e[5 q' # Use beam shape cursor on startup.
+preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+
+# Plugins
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /home/ahmedselim/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 

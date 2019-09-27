@@ -104,14 +104,14 @@ bindsym $mod+Ctrl+Left workspace prev
 #                 set $ws2 2:
 set $ws1 1:
 set $ws2 2:
-set $ws3 3
+set $ws3 3:
 set $ws4 4
 set $ws5 5
 set $ws6 6
-set $ws7 7:
-set $ws8 8:
-set $ws9 9:
-set $ws10 10:
+set $ws7 7:
+set $ws8 8:
+set $ws9 9:
+set $ws10 10:
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -290,31 +290,30 @@ set_from_resource $term_color14    color14
 set_from_resource $term_color15    color15
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
-bar {
-	i3bar_command i3bar
-    status_command i3blocks -c ~/.config/i3/i3blocks-awesome.conf
-    #status_command i3blocks -c ~/.config/i3/i3blocks-original.conf
-    #status_command i3bocks -c ~/.config/i3/i3blocks-rainbow.conf
-    #status_command i3block
-	position bottom
-
- 
-    colors {
-
-#                           border  backgr. text
-        background #0d3642
-        statusline #839496
-        separator  #586e75
-        focused_workspace  #268bd2 #268bd2 #0d3642
-        active_workspace   #586e75 #586e75 #002b36
-        inactive_workspace #073642 #0d3642 #839496
-        urgent_workspace   #dc322f #dc322f #fdf6e3
-
-    }
-}
-
-
-
+#bar {
+	#i3bar_command i3bar
+    ##status_command i3status
+    #status_command i3blocks -c ~/.config/i3/i3blocks-awesome.conf
+    ##status_command i3blocks -c ~/.config/i3/i3blocks-original.conf
+    ##status_command i3bocks -c ~/.config/i3/i3blocks-rainbow.conf
+    ##status_command i3block
+	#position bottom
+#
+#
+    #colors {
+#
+##                           border  backgr. text
+        #background #0d3642
+        #statusline #839496
+        #separator  #586e75
+        #focused_workspace  #268bd2 #268bd2 #0d3642
+        #active_workspace   #586e75 #586e75 #002b36
+        #inactive_workspace #073642 #0d3642 #839496
+        #urgent_workspace   #dc322f #dc322f #fdf6e3
+##
+    #}
+#}
+#
 # hide/unhide i3status bar
 bindsym $mod+Shift+m bar mode toggle
 
@@ -407,11 +406,13 @@ bindsym $mod+F2 exec dsearch
 
 # Background
 exec urxvt
-exec nitrogen --set-zoom-fill $(ls ~/Pictures/Wallpapers/* | grep .png | sort -R | head -1)
+exec nitrogen --set-zoom-fill --random /home/ahmedselim/Pictures/Wallpapers/
+exec ~/.config/polybar/launch.sh
 exec firefox
 exec flameshot
 exec redshift
 exec compton
+exec kkk
 
 for_window [instance="pythondrop"] floating enable
 for_window [instance="pythondrop"] resize set 625 300
