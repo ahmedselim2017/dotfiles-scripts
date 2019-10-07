@@ -32,6 +32,7 @@ alias mkd='mkdir -pv'
 alias haydaa='s $(fc -ln -1)'
 alias q='exit'
 alias 'cd..'='cd ..'
+alias 'cd ...'='cd ../../'
 alias tb="nc termbin.com 9999"
 alias jk="fg"
 alias pacro="/usr/bin/pacman -Qtdq > /dev/null && sudo /usr/bin/pacman -Rns \$(/usr/bin/pacman -Qtdq | sed -e ':a;N;$!ba;s/\n/ /g')"
@@ -76,11 +77,16 @@ fi
 #unset __conda_setup
 # <<< conda initialize <<<
 
-ufetch
+# Make tab completion case insensetive:
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+# Fuzzy Config Finder:
+#alias fc="du -a ~/dotfiles-scripts ~/.config | awk '{print $2}' | fzf | xargs -r vim"
+
 
 # Enable colors and change prompt:
 autoload -U colors && colors
-PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+# PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 
 # Basic auto/tab complete:
 autoload -U compinit
@@ -136,7 +142,14 @@ zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
+ufetch
+
+# Minimal promt config
+MNML_PROMPT=(mnml_ssh mnml_pyenv 'mnml_cwd 2' mnml_status mnml_keymap)
+MNML_RPROMPT=(mnml_git mnml_files)
+
 # Plugins
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/minimal/minimal.zsh
 source /home/ahmedselim/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 

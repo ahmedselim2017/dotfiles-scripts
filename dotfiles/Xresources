@@ -1,10 +1,10 @@
 !Font
 
-!URxvt.font: xft:UbuntuMono Nerd Font:size=11, xft:Inconsolata Nerd Font Mono:size=11, \
+URxvt.font: xft:UbuntuMono Nerd Font:size=11, xft:Inconsolata Nerd Font Mono:size=11
 
 !URxvt.font:    xft:Fantasque\ Sans\ Mono:size=12:style=bold:antialias=true
-!URxvt.font:  xft:Source Code Pro Semibold:size=11
-URxvt.font: xft:xos4 Terminus:style=Regular:size=12
+!URxvt.font:  xft:Source Code Pro :size=11
+!URxvt.font: xft:xos4 Terminus:style=Regular:size=12
 
 URxvt.letterSpace: -0.5
 
@@ -59,3 +59,4 @@ URcvt.scrollTtyKeypress: true
 ! white
 *.color7:       #93a1a1
 *.color15:      #fdf6e3
+

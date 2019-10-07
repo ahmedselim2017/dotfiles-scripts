@@ -117,9 +117,9 @@ set statusline+=%-2v " Virtual column number
 set statusline+=\ %2p%% " Percentage through file in lines as in |CTRL-G|
 
 
-hi StatusLine cterm=reverse gui=reverse ctermfg=14 ctermbg=0 guifg=#93a1a1 guibg=#002732
-hi StatusLineNC cterm=reverse gui=reverse ctermfg=11 ctermbg=0 guifg=#657b83 guibg=#073642
-hi User1 ctermfg=14 ctermbg=0 guifg=#93a1a1 guibg=#073642
+hi StatusLine cterm=reverse ctermfg=14 ctermbg=0
+hi StatusLineNC cterm=reverse ctermfg=11 ctermbg=0
+hi User1 ctermfg=14 ctermbg=0
 " }}}
 
 " Comment Lines Easily:
@@ -270,7 +270,7 @@ nnoremap <Leader>O O<Esc>
 inoremap jk <Esc>
 
 " Easily Quit All:
-comman Q quitall!
+command Q quitall!
 
 " Fix Backspace Key:
 set backspace=indent,eol,start
@@ -361,10 +361,6 @@ endfunction
 
 augroup filetype_tex
     autocmd!
-    " Make Boxes:
-    autocmd filetype tex nnoremap <buffer> <LocalLeader>ib i\makebox[<++>][<++>]{<++>}<Esc>0
-    autocmd filetype tex inoremap <buffer> <LocalLeader>ib \makebox[<++>][<++>]{<++>}<Esc>0
-
     " Insert New Item:
     autocmd filetype tex nnoremap <buffer> <LocalLeader>ii o\item 
     autocmd filetype tex inoremap <buffer> <LocalLeader>ii <Esc>o\item 
@@ -404,7 +400,7 @@ augroup end
 call plug#begin('~/.vim/plugged')
 
 Plug 'sirver/ultisnips'
-
+Plug 'junegunn/goyo.vim'
 call plug#end()
 
 " Ultisnips:
