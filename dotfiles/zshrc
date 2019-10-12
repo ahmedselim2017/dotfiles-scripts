@@ -18,7 +18,7 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 # Aliases
 # Configs
 alias i3config="nvim ~/dotfiles-scripts/dotfiles/i3"
-alias vimconfig="nvim ~/dotfiles-scripts/dotfiles/vimrc"
+alias vimconfig="nvim ~/dotfiles-scripts/dotfiles/nvim"
 alias zshconfig="nvim ~/dotfiles-scripts/dotfiles/zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias resetZSHSource="source ~/.zshrc"
