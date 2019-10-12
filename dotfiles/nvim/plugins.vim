@@ -7,10 +7,8 @@
 
 call plug#begin('~/.vim/plugged')
 
-if has('nvim')
-    Plug 'kassio/neoterm'
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-endif
+Plug 'kassio/neoterm'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'sirver/ultisnips'
 let g:UltiSnipsSnippetDirectories = [$HOME.'/UltiSnips']

@@ -1,3 +1,0 @@
-#!/bin/sh
-
-man -t $(man -k . | dmenu -i -p 'Hangi man sayfası?' -l 30 | awk '{print $1}') | zathura -
