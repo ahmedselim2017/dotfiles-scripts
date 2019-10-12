@@ -11,12 +11,11 @@ filetype plugin indent on "load file rules
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif "Jump the last position when reopening a file
 set showcmd		" Show (partial) command in status line.
 set showmatch		" Show matching brackets.
-set history=1000
-set undolevels=1000
 set title "Show file name on title
 set backspace=indent,eol,start "Fix backspace key
 set encoding=UTF-8
 if !has('nvim')
+    " Better cryption
     set cryptmethod=blowfish
 endif
 " }}}
@@ -97,7 +96,10 @@ set splitright
 set splitbelow
 " }}}
 
-
-
-
+" History and Undo: ----------------------  {{{
+set history=1000
+set undolevels=1000
+set undofile
+set undodir=/tmp
+" }}}
 

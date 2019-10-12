@@ -10,12 +10,12 @@ nnoremap <Esc> :noh<Cr>
 inoremap <Esc> <Esc>:noh<Cr>
 cabbrev W w !sudo tee %
 inoremap jk <Esc>
-command Q quitall!
+command! Q quitall!
 "}}}
 
 " Remap Leader Key: ----------------------  {{{
 let mapleader="ö"
-let maplocalleader="ç"
+let maplocalleader="ş"
 " }}}
 
 " Moving Between Tabs: ----------------------  {{{
@@ -46,9 +46,9 @@ vnoremap > >gv
 " Commenting: ----------------------  {{{
 augroup comment
     autocmd!
-    autocmd FileType python,sh,zsh,bash nnoremap <buffer> <LocalLeader>c mqI# <Esc>'q
-    autocmd FileType tex nnoremap  <buffer> <LocalLeader>c mqI% <Esc>$'q
-    autocmd FileType vim nnoremap <buffer> <LocalLeader>c mqI" <Esc>'q
+    autocmd FileType python,sh,zsh,bash nnoremap <buffer> <LocalLeader>c mqI# <Esc> `q
+    autocmd FileType tex nnoremap  <buffer> <LocalLeader>c mqI%<Esc> $`q
+    autocmd FileType vim nnoremap <buffer> <LocalLeader>c mqI"<Esc> `q
 augroup END
 " }}}
 
