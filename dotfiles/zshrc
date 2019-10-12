@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export EDITOR="/usr/bin/vim"
+export EDITOR="/usr/bin/nvim"
 
 HIST_STAMPS="dd/mm/yyyy"
 HISTFILE="$HOME/.zsh_history"
@@ -17,10 +17,10 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
 # Aliases
 # Configs
-alias i3config="vim ~/dotfiles-scripts/dotfiles/i3"
-alias vimconfig="vim ~/dotfiles-scripts/dotfiles/vimrc"
-alias zshconfig="vim ~/dotfiles-scripts/dotfiles/zshrc"
-alias ohmyzsh="vim ~/.oh-my-zsh"
+alias i3config="nvim ~/dotfiles-scripts/dotfiles/i3"
+alias vimconfig="nvim ~/dotfiles-scripts/dotfiles/vimrc"
+alias zshconfig="nvim ~/dotfiles-scripts/dotfiles/zshrc"
+alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias resetZSHSource="source ~/.zshrc"
 
 # Some Commands
@@ -50,9 +50,15 @@ alias gpm="git push origin master"
 alias gc="git commit -m"
 alias gca="git commit -am"
 
-# Vim
-alias vi="vim"
-alias v="vim"
+# nvim
+alias vi="nvim"
+alias v="nvim"
+alias vim="nvim"
+alias e="nvr -l"
+alias :q="exit"
+alias :wq="exit"
+alias :q!="exit"
+alias :Q="exit"
 
 export TERM='xterm-256color'
 
@@ -81,7 +87,7 @@ fi
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 # Fuzzy Config Finder:
-#alias fc="du -a ~/dotfiles-scripts ~/.config | awk '{print $2}' | fzf | xargs -r vim"
+#alias fc="du -a ~/dotfiles-scripts ~/.config | awk '{print $2}' | fzf | xargs -r nvim"
 
 
 # Enable colors and change prompt:
@@ -95,7 +101,7 @@ zmodload zsh/complist
 compinit
 _comp_options+=(globdots)		# Include hidden files.
 
-# ^e to editcommand with vim
+# ^e to editcommand with nvim
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
@@ -110,7 +116,7 @@ zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
 
-# Use vim keys in tab complete menu:
+# Use nvim keys in tab complete menu:
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char

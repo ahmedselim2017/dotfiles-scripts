@@ -1,6 +1,7 @@
 !Font
 
-URxvt.font: xft:UbuntuMono Nerd Font:size=11, xft:Inconsolata Nerd Font Mono:size=11
+!URxvt.font: xft:FuraCode Nerd Font:size=10.5:style=Regular,
+URxvt.font: xft:UbuntuMono Nerd Font:size=12, xft:Inconsolata Nerd Font Mono:size=11
 
 !URxvt.font:    xft:Fantasque\ Sans\ Mono:size=12:style=bold:antialias=true
 !URxvt.font:  xft:Source Code Pro :size=11
