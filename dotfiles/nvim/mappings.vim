@@ -14,8 +14,8 @@ command! Q quitall!
 "}}}
 
 " Remap Leader Key: ----------------------  {{{
-let mapleader="ö"
-let maplocalleader="ş"
+let mapleader="ş"
+let maplocalleader="ö"
 " }}}
 
 " Moving Between Tabs: ----------------------  {{{
