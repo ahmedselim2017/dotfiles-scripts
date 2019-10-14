@@ -8,6 +8,7 @@
 - [rxvt-unicode](https://github.com/exg/rxvt-unicode)
 - [Neovim](https://neovim.io)
 - [zsh](https://wiki.archlinux.org/index.php/Rxvt-unicode)
+- [polybar](https://github.com/polybar/polybar)
 
 ## Scripts for:
 - compress.sh - Compressing files easily in terminal
