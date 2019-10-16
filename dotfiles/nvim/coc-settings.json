@@ -28,6 +28,19 @@
                 "plaintex",
                 "context"
             ]
+        },
+        "efm": {
+            //https://github.com/neoclide/coc.nvim/wiki/Language-servers#vimerbmarkdown
+            //Daha sonra yeniden kurarken efm konfigrasyonunu yapmayı unutma
+            "command": "efm-langserver",
+            "args": [],
+            // custom config path
+            // "args": ["-c", "/path/to/your/config.yaml"],
+            "filetypes": [
+                "vim",
+                "eruby",
+                "markdown"
+            ]
         }
     }
 }
