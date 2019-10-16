@@ -141,6 +141,15 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " }}}
 
+Plug 'scrooloose/nerdtree'
+" NERDTree: ----------------------  {{{
+" Start NERDTree when vim starts up without specified file:
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" Start NERDTree when vim starts up on opening a directory
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+" }}}}
 
 "Plug 'sirver/ultisnips'
 "let g:UltiSnipsSnippetDirectories = [$HOME.'/UltiSnips']

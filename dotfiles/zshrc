@@ -60,6 +60,10 @@ alias :wq="exit"
 alias :q!="exit"
 alias :Q="exit"
 
+# Functions
+dot() {nvim $(du -a ~/dotfiles-scripts | awk '{print $2}' | sed '/\/.git\//d' | fzf)}
+
+
 export TERM='xterm-256color'
 
 PATH="/home/ahmedselim/perl5/bin${PATH:+:${PATH}}"; export PATH;
