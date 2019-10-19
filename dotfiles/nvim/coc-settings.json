@@ -30,11 +30,8 @@
             ]
         },
         "efm": {
-            //https://github.com/neoclide/coc.nvim/wiki/Language-servers#vimerbmarkdown
-            //Daha sonra yeniden kurarken efm konfigrasyonunu yapmayı unutma
             "command": "efm-langserver",
-            "args": ["-c", "$HOME/.config/efm-langserver/config.yaml"],
-            // custom config path
+            "args": ["-c", "/home/ahmedselim/.config/efm-langserver/config.yaml"],
             "filetypes": [
                 "vim",
                 "eruby",

@@ -406,7 +406,7 @@ bindsym $mod+F2 exec dsearch
 
 # Background
 exec urxvt
-exec wal -i ~/Pictures/Wallpapers/other/koi-fishes.png
+exec nitrogen --set-zoom-fill --random /home/ahmedselim/Pictures/Wallpapers/other/rubiks_cube.png
 exec ~/.config/polybar/launch.sh
 exec firefox
 exec flameshot
