@@ -1,11 +1,9 @@
 #/bin/sh
 # Source: https://github.com/x-zvf/dotfiles/blob/master/scripts/scrlock.sh
 
-pngfile="/tmp/sclock.png"
+pngfile="$(ls ~/Pictures/Wallpapers/*/* | sort -R | head -n 1)"
 bmpfile="/tmp/sclock.bmp"
 glitchedfile="/tmp/sclock_g.bmp"
-
-scrot -z $pngfile
 
 # convert to bmp and pixelate
 magick convert -scale 20% -scale 500% $pngfile $bmpfile
@@ -26,6 +24,6 @@ magick convert -gravity center -font "Hack-Bold-Nerd-Font-Complete-Mono" \
     -pointsize 200 -draw "text 0,240 ''" -channel RGBA -fill '#bf616a' \
     $glitchedfile $pngfile
 
-i3lock -i $pngfile
-#feh $pngfile
+#i3lock -i $pngfile
+sxiv $pngfile
 rm $pngfile $bmpfile $glitchedfile

@@ -39,7 +39,7 @@ alias pacro="/usr/bin/pacman -Qtdq > /dev/null && sudo /usr/bin/pacman -Rns \$(/
 alias yoket="pkill -9"
 alias weather="curl wttr.in"
 alias ls="ls --color=auto"
-alias chwp="nitrogen --set-zoom-fill --random /home/ahmedselim/Pictures/Wallpapers/"
+alias chwp="nitrogen --set-zoom-fill --random /home/$USER/Pictures/Wallpapers/"
 
 # Git
 alias g="git"
@@ -159,7 +159,6 @@ MNML_PROMPT=(mnml_ssh mnml_pyenv 'mnml_cwd 2' mnml_status mnml_keymap)
 MNML_RPROMPT=(mnml_git mnml_files)
 
 # Plugins
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.zsh/minimal/minimal.zsh
-source /home/ahmedselim/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
+source /home/$USER/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /home/$USER/.config/zsh/minimal/minimal.zsh
+source /home/$USER/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

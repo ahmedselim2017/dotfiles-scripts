@@ -405,6 +405,7 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+F2 exec dsearch
 
 # Background
+exec xrdb ~/.Xresources
 exec urxvt
 exec nitrogen --set-zoom-fill --random /home/ahmedselim/Pictures/Wallpapers/other/rubiks_cube.png
 exec ~/.config/polybar/launch.sh

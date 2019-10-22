@@ -1,13 +1,15 @@
 !Font
-
 !URxvt.font: xft:FuraCode Nerd Font:size=10.5:style=Regular,
-URxvt.font: xft:UbuntuMono Nerd Font:size=12, xft:Inconsolata Nerd Font Mono:size=11
+URxvt.font: xft:UbuntuMono Nerd Font:size=12
+!URxvt*font: xft: Liberation Mono:pixelsize=14,xft: DejaVu Sans Mono,xft: Symbola:size=5,xft: Unifont
+
+!URxvt.font: xft:Inconsolata-Regular:size=12
 
 !URxvt.font:    xft:Fantasque\ Sans\ Mono:size=12:style=bold:antialias=true
 !URxvt.font:  xft:Source Code Pro :size=11
 !URxvt.font: xft:xos4 Terminus:style=Regular:size=12
 
-URxvt.letterSpace: -0.5
+URxvt.letterSpace: -1
 
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
