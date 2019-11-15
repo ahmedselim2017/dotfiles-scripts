@@ -2,6 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export EDITOR="/usr/bin/nvim"
 
+
 HIST_STAMPS="dd/mm/yyyy"
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=10000000
@@ -40,6 +41,7 @@ alias yoket="pkill -9"
 alias weather="curl wttr.in"
 alias ls="ls --color=auto"
 alias chwp="nitrogen --set-zoom-fill --random /home/$USER/Pictures/Wallpapers/"
+alias lock='betterlockscreen -l & betterlockscreen -u ~/Pictures/Wallpapers/'
 
 # Git
 alias g="git"
@@ -49,6 +51,10 @@ alias gad="git add ."
 alias gpm="git push origin master"
 alias gc="git commit -m"
 alias gca="git commit -am"
+
+# Youtube-dl
+alias ym="youtube-dl -if bestaudio --extract-audio --audio-format mp3"
+alias y="youtube-dl"
 
 # nvim
 alias vi="nvim"
@@ -62,6 +68,7 @@ alias :Q="exit"
 
 # Functions
 dot() {nvim $(du -a ~/dotfiles-scripts | awk '{print $2}' | sed '/\/.git\//d' | fzf)}
+config() {nvim $(du -a ~/.config | awk '{print $2}' | sed '/\/.git\//d' | fzf)}
 
 
 export TERM='xterm-256color'
@@ -74,14 +81,14 @@ PERL_MM_OPT="INSTALL_BASE=/home/$USER/perl5"; export PERL_MM_OPT;
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-#__conda_setup="$('/home/$USER/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+#__conda_setup="$('/home/$USER/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 #if [ $? -eq 0 ]; then
     #eval "$__conda_setup"
 #else
 if [ -f "/home/$USER/miniconda3/etc/profile.d/conda.sh" ]; then
     . "/home/$USER/miniconda3/etc/profile.d/conda.sh"
 else
-    export PATH="/home/$USER/miniconda/bin:$PATH"
+    export PATH="/home/$USER/miniconda3/bin:$PATH"
 fi
 #fi
 #unset __conda_setup
@@ -153,6 +160,9 @@ echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 ufetch
+
+export PATH="/home/tozkoparan/.local/bin:$PATH"
+
 
 # Minimal promt config
 MNML_PROMPT=(mnml_ssh mnml_pyenv 'mnml_cwd 2' mnml_status mnml_keymap)

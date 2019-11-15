@@ -143,38 +143,34 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 Plug 'scrooloose/nerdtree'
 " NERDTree: ----------------------  {{{
-" Start NERDTree when vim starts up without specified file
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-" Start NERDTree when vim starts up on opening a directory
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
-" Map <C-n> to toggle NERDTree
-map <C-n> :NERDTreeToggle<CR>
-" Close NERDTree if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endifautocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" }}}}
+"" Start NERDTree when vim starts up without specified file
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"" Start NERDTree when vim starts up on opening a directory
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+"" Map <C-n> to toggle NERDTree
+"map <C-n> :NERDTreeToggle<CR>
+"" Close NERDTree if the only window left open is a NERDTree
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endifautocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"" }}}}
 
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
-"Plug 'sirver/ultisnips'
-"let g:UltiSnipsSnippetDirectories = [$HOME.'/UltiSnips']
-"let g:UltiSnipsUsePythonVersion = 3
-"let g:UltiSnipsEditSplit = "vertical"
-"let g:UltiSnipsExpandTrigger = '<tab>'
-"let g:UltiSnipsJumpForwardTrigger = '<tab>'
-"let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-"
+Plug 'sirver/ultisnips'
+let g:UltiSnipsSnippetDirectories = [$HOME.'/UltiSnips']
+let g:UltiSnipsUsePythonVersion = 3
+let g:UltiSnipsEditSplit = "vertical"
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+
+Plug 'lervag/vimtex'
+
 Plug 'junegunn/goyo.vim'
 
-Plug 'vimwiki/vimwiki'
-" VimWiki: ----------------------  {{{
-" Use Markdown
-let g:vimwiki_list = [{'path': '~/vimwiki/',
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
-"}}}
-
-"Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+let g:mkdp_page_title = '${name}'
 
 " Daha sonra yeniden incele vakit olunca
 Plug 'airblade/vim-gitgutter'

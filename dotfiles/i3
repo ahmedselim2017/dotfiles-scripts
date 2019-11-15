@@ -136,7 +136,7 @@ bindsym $mod+Ctrl+8 move container to workspace $ws8
 bindsym $mod+Ctrl+9 move container to workspace $ws9
 bindsym $mod+Ctrl+0 move container to workspace $ws10
 
-for_window [class="Firefox"] move to workspace $ws2
+for_window [class="firefox"] move to workspace $ws2
 
 # Move to workspace with focused container
 bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
@@ -242,7 +242,7 @@ bindcode $mod+Shift+31 resize grow height 5 px or 5 ppt
 bindsym $mod+Shift+o resize shrink width 5 px or 5 ppt
 
 # Lock screen
-bindsym $mod+shift+x exec --no-startup-id scrlock.sh
+bindsym $mod+shift+x exec betterlockscreen -l & betterlockscreen -u ~/Pictures/Wallpapers/
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -323,7 +323,7 @@ bindsym $mod+Shift+m bar mode toggle
   client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
   client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
   client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
-  client.placeholder      #000000 #0c0c0c #ffffff #000000 
+  client.placeholder      #000000 #0c0c0c #ffffff #000000
 
   client.background       #2B2C2B
 
@@ -395,25 +395,22 @@ mode "$mount" {
 }
 
 # Media Player
-
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 
-# Open Searcher
-bindsym $mod+F2 exec dsearch
 
-# Background
+
 exec xrdb ~/.Xresources
 exec urxvt
-exec nitrogen --set-zoom-fill --random /home/ahmedselim/Pictures/Wallpapers/other/rubiks_cube.png
+exec nitrogen --set-zoom-fill --random /home/$USER/Pictures/Wallpapers/
 exec ~/.config/polybar/launch.sh
 exec firefox
+exec dunst
 exec flameshot
-exec redshift
+exec redshift -r
 exec compton
-exec kkk
 
 for_window [instance="pythondrop"] floating enable
 for_window [instance="pythondrop"] resize set 625 300

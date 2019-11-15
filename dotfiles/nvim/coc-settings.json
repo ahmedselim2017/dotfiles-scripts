@@ -20,23 +20,6 @@
                     "directory": "/tmp/ccls"
                 }
             }
-        },
-        "digestif": {
-            "command": "digestif",
-            "filetypes": [
-                "tex",
-                "plaintex",
-                "context"
-            ]
-        },
-        "efm": {
-            "command": "efm-langserver",
-            "args": ["-c", "/home/ahmedselim/.config/efm-langserver/config.yaml"],
-            "filetypes": [
-                "vim",
-                "eruby",
-                "markdown"
-            ]
         }
     }
 }

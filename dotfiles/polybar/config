@@ -96,7 +96,7 @@ font-4 = "Font Awesome 5 Brands:pixelsize=8;1"
 
 modules-left = i3 xwindow
 modules-center =
-modules-right = arrow2 filesystem arrow3 cpu2 arrow8 spotify arrow7 pulseaudio arrow6 arrow0 battery arrow0 date
+modules-right = arrow2 filesystem arrow3 cpu2 arrow8 player-mpris-simple arrow7 pulseaudio arrow6 arrow0 battery arrow0 date
 separator =
 
 ;dim-value = 1.0
@@ -484,6 +484,20 @@ animation-charging-3 = 
 animation-charging-4 = 
 animation-charging-foreground = #a3c725
 animation-charging-framerate = 750
+
+################################################################################
+
+[module/player-mpris-simple]
+type = custom/script
+exec = ~/.config/polybar/scripts/player-mpris-simple.sh
+interval = 3
+click-left = playerctl play-pause
+format-foreground = ${colors.background}
+format-background = ${colors.green}
+
+format-prefix = "  "
+format-prefix-foreground = ${colors.background}
+
 
 ################################################################################
 
