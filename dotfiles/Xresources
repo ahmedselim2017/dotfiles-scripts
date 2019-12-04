@@ -1,6 +1,6 @@
 !Font
 !URxvt.font: xft:FuraCode Nerd Font:size=10.5:style=Regular,
-URxvt.font: xft:UbuntuMono Nerd Font:size=12, xft:symbola:size=12
+URxvt.font: xft:UbuntuMono Nerd Font:size=13, xft:symbola:size=13
 !URxvt*font: xft: Liberation Mono:pixelsize=14,xft: DejaVu Sans Mono,xft: Symbola:size=5,xft: Unifont
 
 !URxvt.font: xft:Inconsolata-Regular:size=12

@@ -102,3 +102,10 @@ set undolevels=1000
 set undofile
 set undodir=/tmp
 " }}}
+
+" Autowrite When Left Insert Mode: ----------------------  {{{
+augroup autowrite
+    autocmd!
+    autocmd InsertLeave *.tex write
+augroup END
+" }}}

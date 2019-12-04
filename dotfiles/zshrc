@@ -1,6 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export EDITOR="/usr/bin/nvim"
+export PAGER="less"
 
 
 HIST_STAMPS="dd/mm/yyyy"
@@ -26,7 +27,7 @@ alias resetZSHSource="source ~/.zshrc"
 
 # Some Commands
 alias cl="command clear"
-alias cls="command clear; ls"
+alias cls="command clear; k"
 alias rf="rm -rf"
 alias s="sudo "
 alias mkd='mkdir -pv'
@@ -42,6 +43,11 @@ alias weather="curl wttr.in"
 alias ls="ls --color=auto"
 alias chwp="nitrogen --set-zoom-fill --random /home/$USER/Pictures/Wallpapers/"
 alias lock='betterlockscreen -l & betterlockscreen -u ~/Pictures/Wallpapers/'
+alias tetris='ssh netris.rocketnine.space'
+alias pbat='prettybat'
+alias bman='batman'
+alias bgrep='batgrep'
+alias fd='cd $(find -type d | fzy)'
 
 # Git
 alias g="git"
@@ -67,8 +73,8 @@ alias :q!="exit"
 alias :Q="exit"
 
 # Functions
-dot() {nvim $(du -a ~/dotfiles-scripts | awk '{print $2}' | sed '/\/.git\//d' | fzf)}
-config() {nvim $(du -a ~/.config | awk '{print $2}' | sed '/\/.git\//d' | fzf)}
+dot() {nvim $(du -a ~/dotfiles-scripts | awk '{print $2}' | sed '/\/.git\//d' | fzy)}
+config() {nvim $(du -a ~/.config | awk '{print $2}' | sed '/\/.git\//d' | fzy)}
 
 
 export TERM='xterm-256color'
@@ -96,9 +102,6 @@ fi
 
 # Make tab completion case insensetive:
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-
-# Fuzzy Config Finder:
-#alias fc="du -a ~/dotfiles-scripts ~/.config | awk '{print $2}' | fzf | xargs -r nvim"
 
 
 # Enable colors and change prompt:
@@ -163,12 +166,12 @@ ufetch
 
 export PATH="/home/tozkoparan/.local/bin:$PATH"
 
-
-# Minimal promt config
-MNML_PROMPT=(mnml_ssh mnml_pyenv 'mnml_cwd 2' mnml_status mnml_keymap)
-MNML_RPROMPT=(mnml_git mnml_files)
+#Theme
+source "/home/$USER/.config/zsh/powerlevel10k/powerlevel10k.zsh-theme"
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Plugins
-source /home/$USER/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /home/$USER/.config/zsh/minimal/minimal.zsh
-source /home/$USER/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source "/home/$USER/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "/home/$USER/.config/zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
+source "/home/$USER/.config/zsh/k/k.sh"
+source "/home/$USER/.config/zsh/z/z.sh"

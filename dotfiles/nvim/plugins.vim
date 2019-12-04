@@ -169,6 +169,7 @@ Plug 'lervag/vimtex'
 
 Plug 'junegunn/goyo.vim'
 
+
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 let g:mkdp_page_title = '${name}'
 
