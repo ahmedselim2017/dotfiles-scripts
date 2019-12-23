@@ -1,6 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export EDITOR="/usr/bin/nvim"
+export SUDO_EDITOR="/usr/bin/nvim"
 export PAGER="less"
 
 
@@ -27,7 +28,7 @@ alias resetZSHSource="source ~/.zshrc"
 
 # Some Commands
 alias cl="command clear"
-alias cls="command clear; k"
+alias cls="command clear; ls"
 alias rf="rm -rf"
 alias s="sudo "
 alias mkd='mkdir -pv'
@@ -60,6 +61,7 @@ alias gca="git commit -am"
 
 # Youtube-dl
 alias ym="youtube-dl -if bestaudio --extract-audio --audio-format mp3"
+alias yp="youtube-dl -o '%(playlist_index)s-%(title)s/%(title)s.%(ext)s' --all-subs -i"
 alias y="youtube-dl"
 
 # nvim
@@ -175,3 +177,4 @@ source "/home/$USER/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "/home/$USER/.config/zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
 source "/home/$USER/.config/zsh/k/k.sh"
 source "/home/$USER/.config/zsh/z/z.sh"
+source "/home/$USER/.config/zsh/fzf-z/fzf-z.plugin.zsh"

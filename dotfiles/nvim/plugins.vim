@@ -141,22 +141,6 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " }}}
 
-Plug 'scrooloose/nerdtree'
-" NERDTree: ----------------------  {{{
-"" Start NERDTree when vim starts up without specified file
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-"" Start NERDTree when vim starts up on opening a directory
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
-"" Map <C-n> to toggle NERDTree
-"map <C-n> :NERDTreeToggle<CR>
-"" Close NERDTree if the only window left open is a NERDTree
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endifautocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-"" }}}}
-
-Plug 'Xuyuanp/nerdtree-git-plugin'
-
 Plug 'sirver/ultisnips'
 let g:UltiSnipsSnippetDirectories = [$HOME.'/UltiSnips']
 let g:UltiSnipsUsePythonVersion = 3
@@ -168,15 +152,40 @@ let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 Plug 'lervag/vimtex'
 
 Plug 'junegunn/goyo.vim'
-
-
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-let g:mkdp_page_title = '${name}'
-
 " Daha sonra yeniden incele vakit olunca
 Plug 'airblade/vim-gitgutter'
 
-" Plug 'prabirshrestha/async.vim'
-" Plug 'prabirshrestha/vim-lsp'
+Plug 'mhinz/vim-startify'
+" Vim-Startify {{{
+let g:startify_custom_indices = map(range(1,100), 'string(v:val)')
+let g:startify_custom_header = [
+            \ '████████╗ ██████╗ ███████╗██╗  ██╗ ██████╗ ██████╗  █████╗ ██████╗  █████╗ ███╗   ██╗',
+            \ '╚══██╔══╝██╔═══██╗╚══███╔╝██║ ██╔╝██╔═══██╗██╔══██╗██╔══██╗██╔══██╗██╔══██╗████╗  ██║',
+            \ '   ██║   ██║   ██║  ███╔╝ █████╔╝ ██║   ██║██████╔╝███████║██████╔╝███████║██╔██╗ ██║',
+            \ '   ██║   ██║   ██║ ███╔╝  ██╔═██╗ ██║   ██║██╔═══╝ ██╔══██║██╔══██╗██╔══██║██║╚██╗██║',
+            \ '   ██║   ╚██████╔╝███████╗██║  ██╗╚██████╔╝██║     ██║  ██║██║  ██║██║  ██║██║ ╚████║',
+            \ '   ╚═╝    ╚═════╝ ╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝'
+            \]
+highlight StartifyBracket ctermfg=240
+highlight StartifyHeader  ctermfg=44
+highlight StartifyNumber  ctermfg=3
+highlight StartifyNumber  ctermfg=215
+highlight StartifyPath    ctermfg=245
+highlight StartifySlash   ctermfg=240
+highlight StartifySpecial ctermfg=240
+"
+if has('nvim')
+    autocmd TabNewEntered * Startify
+else
+    autocmd BufWinEnter *
+        \ if !exists('t:startify_new_tab')
+        \     && empty(expand('%'))
+        \     && empty(&l:buftype)
+        \     && &l:modifiable |
+        \   let t:startify_new_tab = 1 |
+        \   Startify |
+        \ endif
+endif
+"}}}
 
 call plug#end()

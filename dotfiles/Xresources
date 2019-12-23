@@ -1,13 +1,12 @@
 !Font
-!URxvt.font: xft:FuraCode Nerd Font:size=10.5:style=Regular,
-URxvt.font: xft:UbuntuMono Nerd Font:size=13, xft:symbola:size=13
-!URxvt*font: xft: Liberation Mono:pixelsize=14,xft: DejaVu Sans Mono,xft: Symbola:size=5,xft: Unifont
+URxvt.font: xft:UbuntuMono Nerd Font:size=13,\
+            xft:symbola:size=13,\
+            xft:Unifont,\
+            xft: Liberation Mono:pixelsize=14,\
+            xft: DejaVu Sans Mono,\
+            xft: Symbola:size=5,\
+            xft: Unifont
 
-!URxvt.font: xft:Inconsolata-Regular:size=12
-
-!URxvt.font:    xft:Fantasque\ Sans\ Mono:size=12:style=bold:antialias=true
-!URxvt.font:  xft:Source Code Pro :size=11
-!URxvt.font: xft:xos4 Terminus:style=Regular:size=12
 URxvt.letterSpace: -1
 
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
@@ -25,39 +24,44 @@ URxvt.scrollTtyOutput: false
 URxvt.scrollWithBuffer: true
 URcvt.scrollTtyKeypress: true
 
-! special
-*.foreground:   #93a1a1
-*.background:   #002b36
-*.cursorColor:  #93a1a1
+!Colors
+#define bg    #292d3e
+#define fg    #bfc7d5
+#define curs  #bfc7d5
+#define blk   #292d3e
+#define bblk  #676e95
+#define red   #f07178
+#define grn   #c3e88d
+#define ylw   #ffcb6b
+#define blu   #82aaff
+#define mag   #c792ea
+#define cyn   #89ddff
+#define wht   #bfc7d5
+#define bred  #f07178
+#define bgrn  #c3e88d
+#define bylw  #ffcb6b
+#define bblu  #82aaff
+#define bmag  #c792ea
+#define bcyn  #89ddff
+#define bwht  #959dcb
 
-! black
-*.color0:       #002b36
-*.color8:       #657b83
+*background:   bg
+*foreground:   fg
+*cursorColor:  curs
 
-! red
-*.color1:       #dc322f
-*.color9:       #dc322f
-
-! green
-*.color2:       #859900
-*.color10:      #859900
-
-! yellow
-*.color3:       #b58900
-*.color11:      #b58900
-
-! blue
-*.color4:       #268bd2
-*.color12:      #268bd2
-
-! magenta
-*.color5:       #6c71c4
-*.color13:      #6c71c4
-
-! cyan
-*.color6:       #2aa198
-*.color14:      #2aa198
-
-! white
-*.color7:       #93a1a1
-*.color15:      #fdf6e3
+*color0:      blk
+*color8:      bblk
+*color1:      red
+*color9:      bred
+*color2:      grn
+*color10:     bgrn
+*color3:      ylw
+*color11:     bylw
+*color4:      blu
+*color12:     bblu
+*color5:      mag
+*color13:     bmag
+*color6:      cyn
+*color14:     bcyn
+*color7:      wht
+*color15:     bwht
