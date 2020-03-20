@@ -191,8 +191,6 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# remap power off key
-bindsym XF86PowerOff exec sudo dshutdown
 
 # Set shut down, restart and locking features
 bindsym $mod+shift+w mode "$mode_system"
@@ -399,18 +397,17 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-
-
-
 exec xrdb ~/.Xresources
 exec urxvt
-exec nitrogen --set-zoom-fill --random /home/$USER/Pictures/Wallpapers/
+#exec nitrogen --set-zoom-fill --random /home/$USER/Pictures/Wallpapers/
 exec ~/.config/polybar/launch.sh
 exec firefox
 exec dunst
 exec flameshot
 exec redshift -r
 exec compton
+
+bindsym XF86PowerOff exec urxvt
 
 for_window [instance="pythondrop"] floating enable
 for_window [instance="pythondrop"] resize set 625 300
@@ -431,3 +428,5 @@ bindsym $mod+t [instance="shell"] scratchpad show; [instance="shell"] move posit
 bindsym $mod+Shift+p exec passmenu
 
 bindsym $mod+Shift+f focus
+
+exec bwall -cup_dark &

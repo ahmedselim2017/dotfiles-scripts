@@ -8,7 +8,7 @@
 # process to determine DBUS_SESSION_BUS_ADDRESS
 USER_DBUS_PROCESS_NAME="gconfd-2"
 
-USER="ahmedselim"
+USER="$USER"
 NOTIFY_SEND_BIN="/usr/bin/notify-send"
 
 TITLE="$1"

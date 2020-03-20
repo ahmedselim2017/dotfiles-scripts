@@ -48,7 +48,9 @@ alias tetris='ssh netris.rocketnine.space'
 alias pbat='prettybat'
 alias bman='batman'
 alias bgrep='batgrep'
-alias fd='cd $(find -type d | fzy)'
+alias fzp="fzf --preview 'bat --style=numbers --color=always {} | head -500'"
+alias hopper="/opt/hopper-v4/bin/Hopper"
+alias bos="cd $(mktemp -d)"
 
 # Git
 alias g="git"
@@ -168,6 +170,21 @@ ufetch
 
 export PATH="/home/tozkoparan/.local/bin:$PATH"
 
+function dp(){
+    echo '+-----------------------------------------------------------------------------+'
+    echo '| Saatler       | Pazartesi | Salı       | Çarşamba | Perşembe   | Cuma       |'
+    echo '+-----------------------------------------------------------------------------+'
+    echo '| 08.30 - 09.10 | Matematik | İngilizce  | Kimya    | Biyoloji   | Matematik  |'
+    echo '| 09.20 - 10.00 | Matematik | Din        | Kimya    | Biyoloji   | Matematik  |'
+    echo '| 10.10 - 10.50 | Tarih     | Edebiyat   | Felsefe  | Matematik  | İngilizce  |'
+    echo '| 11.00 - 11.40 | Tarih     | Edebiyat   | Felsefe  | Matematik  | Edebiyat   |'
+    echo '| 11.50 - 12.30 | Kimya     | Fizik      | Görsel   | Edebiyat   | Edebiyat   |'
+    echo '| 13.10 - 13.50 | Kimya     | Fizik      | Görsel   | Edebiyat   | Fransızca  |'
+    echo '| 14.00 - 14.40 | Biyoloji  | Beden      | Fizik    | İngilizce  | Fransızca  |'
+    echo '| 14.45 - 15.25 | Biyoloji  | Beden      | Fizik    | İngilizce  | Din        |'
+    echo '+-----------------------------------------------------------------------------+'
+}
+
 #Theme
 source "/home/$USER/.config/zsh/powerlevel10k/powerlevel10k.zsh-theme"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -178,3 +195,5 @@ source "/home/$USER/.config/zsh/fast-syntax-highlighting/fast-syntax-highlightin
 source "/home/$USER/.config/zsh/k/k.sh"
 source "/home/$USER/.config/zsh/z/z.sh"
 source "/home/$USER/.config/zsh/fzf-z/fzf-z.plugin.zsh"
+
+source /home/tozkoparan/.config/broot/launcher/bash/br

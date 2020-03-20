@@ -30,12 +30,21 @@ set shortmess+=c
 " always show signcolumns
 set signcolumn=yes
 "
-" Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+" Make <tab> used for trigger completion, completion confirm, snippet expand and jump like VSCode.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
+"
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+"
+let g:coc_snippet_next = '<tab>'
+"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 "
 function! s:check_back_space() abort
@@ -141,19 +150,17 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " }}}
 
-Plug 'sirver/ultisnips'
-let g:UltiSnipsSnippetDirectories = [$HOME.'/UltiSnips']
-let g:UltiSnipsUsePythonVersion = 3
-let g:UltiSnipsEditSplit = "vertical"
-let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-
 Plug 'lervag/vimtex'
 
 Plug 'junegunn/goyo.vim'
-" Daha sonra yeniden incele vakit olunca
 Plug 'airblade/vim-gitgutter'
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='bubblegum'
+
 
 Plug 'mhinz/vim-startify'
 " Vim-Startify {{{
@@ -186,6 +193,24 @@ else
         \   Startify |
         \ endif
 endif
+
 "}}}
+
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+" NERDTree {{{
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+"
+noremap <C-Space> :NERDTreeToggle<CR>
+"
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" }}}
+
+Plug 'junegunn/fzf', { 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
+noremap <C-f> :FZF<CR>
+
+
 
 call plug#end()
