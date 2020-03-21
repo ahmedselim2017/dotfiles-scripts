@@ -93,10 +93,11 @@ font-1 = "UbuntuMono Nerd Font:size=16;3"
 font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=8;1"
 font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=8;1"
 font-4 = "Font Awesome 5 Brands:pixelsize=8;1"
+font-5 = "Symbola:size=13;2"
 
 modules-left = i3 xwindow
 modules-center =
-modules-right = arrow2 filesystem arrow3 cpu2 arrow8 player-mpris-simple arrow7 pulseaudio arrow6 arrow0 battery arrow0 date
+modules-right = arrow2 filesystem arrow3 cpu2 arrow8 corona arrow7 pulseaudio arrow6 arrow0 battery arrow0 date
 separator =
 
 ;dim-value = 1.0
@@ -313,14 +314,14 @@ type = custom/text
 content = "%{T2} %{T-}"
 content-font = 2
 content-foreground = ${colors.cyan}
-content-background = ${colors.green}
+content-background = ${colors.red}
 
 [module/arrow8]
-; green to cyan
+; red to cyan
 type = custom/text
 content = "%{T2} %{T-}"
 content-font = 2
-content-foreground = ${colors.green}
+content-foreground = ${colors.red}
 content-background = ${colors.magenta}
 
 
@@ -510,6 +511,16 @@ interval = 5
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 ;format-underline = #00AF02
+
+################################################################################
+
+[module/corona]
+type = custom/script
+exec = ~/dotfiles-scripts/scripts/corona
+interval = 10800
+format-background = ${colors.red}
+format-foreground = ${colors.background}
+
 
 ################################################################################
 
@@ -961,6 +972,7 @@ format-background = ${colors.green}
 format-prefix = "   "
 format-prefix-foreground = ${colors.background}
 label = %output:0:150%
+
 
 ################################################################################
 

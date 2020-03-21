@@ -2,6 +2,7 @@
 URxvt.font: xft:UbuntuMono Nerd Font:size=13,\
             xft:Terminess Powerline:size=13, \
             xft:symbola:size=13,\
+            xft:Noto Color Emoji:style=Regular,\
             xft:Unifont,\
             xft: Liberation Mono:pixelsize=14,\
             xft: DejaVu Sans Mono,\

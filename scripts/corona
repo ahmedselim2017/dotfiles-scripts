@@ -1,0 +1,9 @@
+#!/bin/sh
+
+source ~/dotfiles-scripts/secrets.sh
+curl -s --request GET --url "https://api.collectapi.com/corona/countriesData?country=Turkey" \
+    --header "authorization: $CORONA_API_KEY" \
+    --header 'content-type: application/json' |
+    jq -r '"😷 "+ .result[0].activeCases + "(" + .result[0].newCases +" ⇧) 💀 "
+        + .result[0].totalDeaths + "(" + .result[0].newDeaths +" ⇧)"'
+
