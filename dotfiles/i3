@@ -266,7 +266,7 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id amx #increase sound volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 0 +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 0 -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
@@ -288,8 +288,8 @@ bindsym XF86PowerOff exec urxvt
 for_window [instance="pythondrop"] floating enable
 for_window [instance="pythondrop"] resize set 625 300
 for_window [instance="pythondrop"] move scratchpad
-for_window [instance="pythondrop"] border pixel 3
-for_window [instance="pythondrop"] border_radius 0
+for_window [instance="pythondrop"] border pixel 0
+for_window [instance="pythondrop"] border_radius 10
 exec --no-startup-id urxvt -name pythondrop -e python -q
 
 bindsym $mod+p [instance="pythondrop"] scratchpad show; [instance="pythondrop"] move position center
@@ -297,8 +297,8 @@ bindsym $mod+p [instance="pythondrop"] scratchpad show; [instance="pythondrop"] 
 for_window [instance="shell"] floating enable
 for_window [instance="shell"] resize set 625 300
 for_window [instance="shell"] move scratchpad
-for_window [instance="shell"] border pixel 3
-for_window [instance="shell"] border_radius 0
+for_window [instance="shell"] border pixel 0
+for_window [instance="shell"] border_radius 10
 exec --no-startup-id urxvt -name shell
 
 bindsym $mod+t [instance="shell"] scratchpad show; [instance="shell"] move position center
