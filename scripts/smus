@@ -1,0 +1,11 @@
+#!/bin/sh
+
+[ -f "$1" ] && mpv $1 && exit 0
+
+[ ! -d "$1" ] && echo 'Usage: smus <directory / music file>' && exit 2
+
+while true;
+do
+    mpv $(find "$1" -type f -name "*.mp3" -o -name ".m4a" -o -name ".webm" -o -name ".wav" | shuf)
+done
+
