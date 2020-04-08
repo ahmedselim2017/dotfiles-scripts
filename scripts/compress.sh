@@ -1,6 +1,6 @@
 #!/bin/bash
 
-    ( [ -z "$1" ] || [ -z "$2" ] ) &&  echo "Usage: compress.sh <compress_type> <file> " && exit
+( [ -z "$1" ] || [ -z "$2" ] ) &&  echo "Usage: compress.sh <compress_type> <file> " && exit
 
 if ( [ -f "$2" ] || [ -d "$2" ] ); then
     case $1 in
@@ -15,13 +15,13 @@ if ( [ -f "$2" ] || [ -d "$2" ] ); then
         bz2) bzip2 -k $2;;
         rar) rar a "${2%.*}.rar" $2;;
         gz) gzip -k $2;;
-        Z) compress -fc $2;; 
-        *) echo "Supported types: 
+        Z) compress -fc $2;;
+        *) echo "Supported types:
             tar   tar.bz2  tar.xz  tar.gz  zip  xz
             lzma  bz2      rar     gz      7z   Z";;
 
 
     esac
-else 
+else
     echo "File/directory not found"
 fi
