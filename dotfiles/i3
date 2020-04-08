@@ -8,17 +8,20 @@ set $mod Mod4
 # workspace_layout tabbed <stacking|tabbed>
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-new_window pixel 1
+new_window pixel 0
 new_float normal
+
+# Configure the raunded borders
+border_radius 10
 
 # Hide borders
 hide_edge_borders none
 
-# change borders
-bindsym $mod+u border none
-bindsym $mod+y border pixel 1
-bindsym $mod+n border normal
-
+## change borders
+#bindsym $mod+u border none
+#bindsym $mod+y border pixel 1
+#bindsym $mod+n border normal
+#
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font xft:monospace 11
@@ -29,23 +32,10 @@ bindsym $mod+Return exec urxvt
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start program launcher
+# start dmenu
 bindsym $mod+d exec --no-startup-id $(dmenu_path | dmenu -i -p "Run:")
 
-################################################################################################
-## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
-################################################################################################
-
-exec --no-startup-id volumeicon
-bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
-#exec --no-startup-id pulseaudio
-#exec --no-startup-id pa-applet
-#bindsym $mod+Ctrl+m exec pavucontrol
-
-################################################################################################
-
 #bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
-bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
 # change focus
 bindsym $mod+h focus left
@@ -70,22 +60,11 @@ bindsym $mod+v split toggle
 # toggle fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
-
-# toggle sticky
-bindsym $mod+Shift+s sticky toggle
-
-# focus the parent container
-bindsym $mod+a focus parent
 
 # move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -94,14 +73,7 @@ bindsym $mod+Shift+minus move scratchpad
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
 
-#navigate workspaces next / previous
-bindsym $mod+Ctrl+Right workspace next
-bindsym $mod+Ctrl+Left workspace prev
-
 # Workspace names
-# to display names or symbols instead of plain workspace numbers you can use
-# something like: set $ws1 1:mail
-#                 set $ws2 2:
 set $ws1 1:
 set $ws2 2:
 set $ws3 3:
@@ -112,6 +84,7 @@ set $ws7 7:
 set $ws8 8:
 set $ws9 9:
 set $ws10 10:
+
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -136,7 +109,6 @@ bindsym $mod+Ctrl+8 move container to workspace $ws8
 bindsym $mod+Ctrl+9 move container to workspace $ws9
 bindsym $mod+Ctrl+0 move container to workspace $ws10
 
-for_window [class="Firefox"] move to workspace $ws2
 
 # Move to workspace with focused container
 bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
@@ -150,26 +122,13 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
 # Open applications on specific workspaces
-# assign [class="Mailspring"] $ws1
-# assign [class="Pale moon"] $ws2
-# assign [class="Pcmanfm"] $ws3
-# assign [class="Skype"] $ws5
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border pixel 1
-for_window [class="calamares"] floating enable border normal
-for_window [class="Clipgrab"] floating enable
-for_window [title="File Transfer*"] floating enable
-for_window [class="Galculator"] floating enable border pixel 1
-for_window [class="GParted"] floating enable border normal
-for_window [title="i3_help"] floating enable sticky enable border normal
-for_window [class="Lightdm-settings"] floating enable
 for_window [class="Lxappearance"] floating enable sticky enable border normal
 for_window [title="MuseScore: Play Panel"] floating enable
-for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Oblogout"] fullscreen enable
 for_window [class="octopi"] floating enable
-for_window [title="About Pale Moon"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="qt5ct"] floating enable sticky enable border normal
 for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
@@ -192,47 +151,6 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 
-# Set shut down, restart and locking features
-bindsym $mod+shift+w mode "$mode_system"
-set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
-mode "$mode_system" {
-    bindsym l exec --no-startup-id i scrlock.sh ,  mode "default"
-    bindsym s exec --no-startup-id i3exit suspend, mode "default"
-    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
-    bindsym e exec --no-startup-id i3exit logout, mode "default"
-    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id i3exit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
-
-    # exit system mode: "Enter" or "Escape"
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-#
-## Resize window (you can also use the mouse for that)
-#bindsym $kod+r mode "resize"
-#mode "resize" {
-        ## These bindings trigger as soon as you enter the resize mode
-        ## Pressing left will shrink the window’s width.
-        ## Pressing right will grow the window’s width.
-        ## Pressing up will shrink the window’s height.
-        ## Pressing down will grow the window’s height.
-        #bindsym h resize shrink width 5 px or 5 ppt
-        #bindsym j resize grow height 5 px or 5 ppt
-        #bindsym k resize shrink height 5 px or 5 ppt
-        #bindsym l resize grow width 5 px or 5 ppt
-#
-        ## same bindings, but for the arrow keys
-        #bindsym Left resize shrink width 10 px or 10 ppt
-        #bindsym Down resize grow height 10 px or 10 ppt
-        #bindsym Up resize shrink height 10 px or 10 ppt
-        #bindsym Right resize grow width 10 px or 10 ppt
-#
-        ## exit resize mode: Enter or Escape
-        #bindsym Return mode "default"
-        #bindsym Escape mode "default"
-#}
-
 # Resize window
 bindsym $mod+Shift+y resize grow width 5 px or 5 ppt
 bindsym $mod+Shift+u resize shrink height 5 px or 5 ppt
@@ -240,34 +158,12 @@ bindcode $mod+Shift+31 resize grow height 5 px or 5 ppt
 bindsym $mod+Shift+o resize shrink width 5 px or 5 ppt
 
 # Lock screen
-bindsym $mod+shift+x exec betterlockscreen -l & betterlockscreen -u ~/Pictures/Wallpapers/
+bindsym $mod+shift+x exec ~/git-clones/betterlockscreen/betterlockscreen -l glitch & ~/git-clones/betterlockscreen/betterlockscreen -u ~/Pictures/Wallpapers
 
 # Autostart applications
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nm-applet
-exec --no-startup-id xfce4-power-manager
-exec --no-startup-id pamac-tray
-exec --no-startup-id clipit
-# exec --no-startup-id blueman-applet
-# exec_always --no-startup-id sbxkb
-exec --no-startup-id start_conky_maia
-# exec --no-startup-id start_conky_green
-exec --no-startup-id xautolock -time 10 -locker blurlock
-exec_always --no-startup-id ff-theme-util
-exec_always --no-startup-id fix_xcursor
 
 # Color palette used for the terminal ( ~/.Xresources file )
-# Colors are gathered based on the documentation:
-# https://i3wm.org/docs/userguide.html#xresources
-# Change the variable name at the place you want to match the color
-# of your terminal like this:
-# [example]
-# If you want your bar to have the same background color as your 
-# terminal background change the line 362 from:
-# background #14191D
-# to:
-# background $term_background
-# Same logic applied to everything else.
 set_from_resource $term_background background
 set_from_resource $term_foreground foreground
 set_from_resource $term_color0     color0
@@ -286,34 +182,6 @@ set_from_resource $term_color12    color12
 set_from_resource $term_color13    color13
 set_from_resource $term_color14    color14
 set_from_resource $term_color15    color15
-
-# Start i3bar to display a workspace bar (plus the system information i3status if available)
-#bar {
-	#i3bar_command i3bar
-    ##status_command i3status
-    #status_command i3blocks -c ~/.config/i3/i3blocks-awesome.conf
-    ##status_command i3blocks -c ~/.config/i3/i3blocks-original.conf
-    ##status_command i3bocks -c ~/.config/i3/i3blocks-rainbow.conf
-    ##status_command i3block
-	#position bottom
-#
-#
-    #colors {
-#
-##                           border  backgr. text
-        #background #0d3642
-        #statusline #839496
-        #separator  #586e75
-        #focused_workspace  #268bd2 #268bd2 #0d3642
-        #active_workspace   #586e75 #586e75 #002b36
-        #inactive_workspace #073642 #0d3642 #839496
-        #urgent_workspace   #dc322f #dc322f #fdf6e3
-##
-    #}
-#}
-#
-# hide/unhide i3status bar
-bindsym $mod+Shift+m bar mode toggle
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
@@ -397,9 +265,17 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
+
 exec xrdb ~/.Xresources
 exec urxvt
-#exec nitrogen --set-zoom-fill --random /home/$USER/Pictures/Wallpapers/
 exec ~/.config/polybar/launch.sh
 exec firefox
 exec dunst
@@ -412,7 +288,8 @@ bindsym XF86PowerOff exec urxvt
 for_window [instance="pythondrop"] floating enable
 for_window [instance="pythondrop"] resize set 625 300
 for_window [instance="pythondrop"] move scratchpad
-for_window [instance="pythondrop"] border pixel 5
+for_window [instance="pythondrop"] border pixel 3
+for_window [instance="pythondrop"] border_radius 0
 exec --no-startup-id urxvt -name pythondrop -e python -q
 
 bindsym $mod+p [instance="pythondrop"] scratchpad show; [instance="pythondrop"] move position center
@@ -420,7 +297,8 @@ bindsym $mod+p [instance="pythondrop"] scratchpad show; [instance="pythondrop"] 
 for_window [instance="shell"] floating enable
 for_window [instance="shell"] resize set 625 300
 for_window [instance="shell"] move scratchpad
-for_window [instance="shell"] border pixel 5
+for_window [instance="shell"] border pixel 3
+for_window [instance="shell"] border_radius 0
 exec --no-startup-id urxvt -name shell
 
 bindsym $mod+t [instance="shell"] scratchpad show; [instance="shell"] move position center
@@ -429,4 +307,5 @@ bindsym $mod+Shift+p exec passmenu
 
 bindsym $mod+Shift+f focus
 
-exec bwall -cup_dark &
+exec setbg
+

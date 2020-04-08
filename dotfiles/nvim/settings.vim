@@ -107,5 +107,14 @@ set undodir=/tmp
 augroup autowrite
     autocmd!
     autocmd InsertLeave *.tex write
+    autocmd InsertLeave *.md write
+augroup END
+" }}}
+
+" Markdown Syntax Highlight For Calcurse: ----------------------  {{{
+augroup calcurse
+    autocmd!
+    autocmd BufRead,BufNewFile /tmp/calcurse** set filetype=markdown
+    autocmd BufRead,BufNewFile /home/tozkoparan/.calcurse/notes/** set filetype=markdown
 augroup END
 " }}}

@@ -211,6 +211,8 @@ Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 noremap <C-f> :FZF<CR>
 
-
+Plug 'vimwiki/vimwiki'
+let g:vimwiki_list = [{'path': '~/Documents/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
 
 call plug#end()

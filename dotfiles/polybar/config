@@ -95,9 +95,9 @@ font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=8;1"
 font-4 = "Font Awesome 5 Brands:pixelsize=8;1"
 font-5 = "Symbola:size=13;2"
 
-modules-left = i3 xwindow
+modules-left = i3
 modules-center =
-modules-right = arrow2 filesystem arrow3 cpu2 arrow8 corona arrow7 pulseaudio arrow6 arrow0 battery arrow0 date
+modules-right =  arrow_red2back corona arrow_blue2red backlight arrow_magenta2blue pulseaudio arrow_back2magenta arrow0 battery arrow0 date
 separator =
 
 ;dim-value = 1.0
@@ -252,7 +252,6 @@ format-background = ${colors.background}
 
 
 [module/arrow0]
-; back to back
 type = custom/text
 content = "%{T2} %{T-}"
 content-font = 2
@@ -260,70 +259,40 @@ content-foreground = ${colors.background}
 content-background = ${colors.background}
 
 
-[module/arrow1]
-; green to back
+[module/arrow_back2magenta]
 type = custom/text
-content = "%{T2} %{T-}"
+content = "%{T2} %{T-}"
 content-font = 2
-content-foreground = ${colors.green}
-content-background = ${colors.background}
+content-foreground = ${colors.background}
+content-background = ${colors.magenta}
 
-[module/arrow2]
-; blue to back
+[module/arrow_cyan2blue]
+type = custom/text
+content = "%{T2} %{T-}"
+content-font = 2
+content-foreground = ${colors.cyan}
+content-background = ${colors.blue}
+
+[module/arrow_blue2red]
 type = custom/text
 content = "%{T2} %{T-}"
 content-font = 2
 content-foreground = ${colors.blue}
+content-background = ${colors.red}
+
+[module/arrow_red2back]
+type = custom/text
+content = "%{T2} %{T-}"
+content-font = 2
+content-foreground = ${colors.red}
 content-background = ${colors.background}
 
-[module/arrow3]
-; magenta to blue
+[module/arrow_magenta2blue]
 type = custom/text
 content = "%{T2} %{T-}"
 content-font = 2
 content-foreground = ${colors.magenta}
 content-background = ${colors.blue}
-
-[module/arrow4]
-; yellow to magenta
-type = custom/text
-content = "%{T2} %{T-}"
-content-font = 2
-content-foreground = ${colors.yellow}
-content-background = ${colors.magenta}
-
-[module/arrow5]
-; cyan to yellow
-type = custom/text
-content = "%{T2} %{T-}"
-content-font = 2
-content-foreground = ${colors.cyan}
-content-background = ${colors.yellow}
-
-[module/arrow6]
-; back to cyan
-type = custom/text
-content = "%{T2} %{T-}"
-content-font = 2
-content-foreground = ${colors.background}
-content-background = ${colors.cyan}
-
-[module/arrow7]
-; green to magenta
-type = custom/text
-content = "%{T2} %{T-}"
-content-font = 2
-content-foreground = ${colors.cyan}
-content-background = ${colors.red}
-
-[module/arrow8]
-; red to cyan
-type = custom/text
-content = "%{T2} %{T-}"
-content-font = 2
-content-foreground = ${colors.red}
-content-background = ${colors.magenta}
-
 
 ################################################################################
 ###############################################################################
@@ -420,26 +389,28 @@ card = intel_backlight
 ;   <label> (default)
 ;   <ramp>
 ;   <bar>
-format = <label> <bar>
-format-foreground = ${colors.foreground}
-format-background = ${colors.background}
+format = "<ramp> <label>"
+format-foreground = ${colors.background}
+format-background = ${colors.blue}
 
 ; Available tokens:
 ;   %percentage% (default)
 label = %percentage%%
 
 ; Only applies if <ramp> is used
-ramp-0 = 🌕
-ramp-1 = 🌔
-ramp-2 = 🌓
-ramp-3 = 🌒
-ramp-4 = 🌑
+ramp-0 = " 🌕"
+ramp-1 = " 🌔"
+ramp-2 = " 🌓"
+ramp-3 = " 🌒"
+ramp-4 = " 🌑"
 
 ; Only applies if <bar> is used
 bar-width = 10
 bar-indicator = |
 bar-fill = ─
 bar-empty = ─
+
+enable-scroll=true
 
 ################################################################################
 
@@ -912,13 +883,13 @@ format-volume = <label-volume>
 ;label-volume = %percentage%% a
 label-volume = "  %percentage%%"
 label-volume-foreground = ${colors.background}
-label-volume-background = ${colors.cyan}
+label-volume-background = ${colors.magenta}
 
 ; Available tokens:
 ;   %percentage% (default)
 label-muted = "  muted"
 label-muted-foreground = ${colors.background}
-label-muted-background = ${colors.cyan}
+label-muted-background = ${colors.magenta}
 
 ################################################################################
 

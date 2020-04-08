@@ -62,8 +62,8 @@ alias gc="git commit -m"
 alias gca="git commit -am"
 
 # Youtube-dl
-alias ym="youtube-dl -if bestaudio --extract-audio --audio-format mp3"
-alias yp="youtube-dl -o '%(playlist_index)s-%(title)s/%(title)s.%(ext)s' --all-subs -i"
+alias ym="youtube-dl --restrict-filenames -if bestaudio --extract-audio --audio-format mp3"
+alias yp="youtube-dl --restrict-filenames -io '%(playlist_index)s-%(title)s/%(title)s.%(ext)s' --all-subs -i"
 alias y="youtube-dl"
 
 # nvim
@@ -77,8 +77,9 @@ alias :q!="exit"
 alias :Q="exit"
 
 # Functions
-dot() {nvim $(du -a ~/dotfiles-scripts | awk '{print $2}' | sed '/\/.git\//d' | fzy)}
-config() {nvim $(du -a ~/.config | awk '{print $2}' | sed '/\/.git\//d' | fzy)}
+function dot() {nvim $(du -a ~/dotfiles-scripts | awk '{print $2}' | sed '/\/.git\//d' | fzf --cycle --height=20% --reverse)}
+function conf() {nvim $(du -a ~/.config | awk '{print $2}' | sed '/\/.git\//d' | fzf --cycle --height=20% --reverse)}
+function mkc (){mkdir -v $1 && cd $1}
 
 
 export TERM='xterm-256color'
@@ -166,23 +167,23 @@ zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
-ufetch
+greeter
 
-export PATH="/home/tozkoparan/.local/bin:$PATH"
+export PATH="/home/tozkoparan/.local/bin:/home/tozkoparan/dotfiles-scripts/scripts:$PATH"
 
 function dp(){
-    echo '+-----------------------------------------------------------------------------+'
-    echo '| Saatler       | Pazartesi | Salı       | Çarşamba | Perşembe   | Cuma       |'
-    echo '+-----------------------------------------------------------------------------+'
-    echo '| 08.30 - 09.10 | Matematik | İngilizce  | Kimya    | Biyoloji   | Matematik  |'
-    echo '| 09.20 - 10.00 | Matematik | Din        | Kimya    | Biyoloji   | Matematik  |'
-    echo '| 10.10 - 10.50 | Tarih     | Edebiyat   | Felsefe  | Matematik  | İngilizce  |'
-    echo '| 11.00 - 11.40 | Tarih     | Edebiyat   | Felsefe  | Matematik  | Edebiyat   |'
-    echo '| 11.50 - 12.30 | Kimya     | Fizik      | Görsel   | Edebiyat   | Edebiyat   |'
-    echo '| 13.10 - 13.50 | Kimya     | Fizik      | Görsel   | Edebiyat   | Fransızca  |'
-    echo '| 14.00 - 14.40 | Biyoloji  | Beden      | Fizik    | İngilizce  | Fransızca  |'
-    echo '| 14.45 - 15.25 | Biyoloji  | Beden      | Fizik    | İngilizce  | Din        |'
-    echo '+-----------------------------------------------------------------------------+'
+    echo    '+-----------------------------------------------------------------------------+'
+    echo    '| Saatler       | Pazartesi | Salı       | Çarşamba | Perşembe   | Cuma       |'
+    echo    '+-----------------------------------------------------------------------------+'
+    echo -e '| 08.30 - 09.10 | \e[32mMatematik\e[39m | İngilizce  | \e[33mKimya\e[39m    | \e[34mBiyoloji\e[39m   | \e[32mMatematik\e[39m  |'
+    echo -e '| 09.20 - 10.00 | \e[32mMatematik\e[39m | Din        | \e[33mKimya\e[39m    | \e[34mBiyoloji\e[39m   | \e[32mMatematik\e[39m  |'
+    echo -e '| 10.10 - 10.50 | Tarih     | Edebiyat   | Felsefe  | \e[32mMatematik\e[39m  | İngilizce  |'
+    echo -e '| 11.00 - 11.40 | Tarih     | Edebiyat   | Felsefe  | \e[32mMatematik\e[39m  | Edebiyat   |'
+    echo -e '| 11.50 - 12.30 | \e[33mKimya\e[39m     | \e[35mFizik\e[39m      | Görsel   | Edebiyat   | Edebiyat   |'
+    echo -e '| 13.10 - 13.50 | \e[33mKimya\e[39m     | \e[35mFizik\e[39m      | Görsel   | Edebiyat   | Fransızca  |'
+    echo -e '| 14.00 - 14.40 | \e[34mBiyoloji\e[39m  | Beden      | \e[35mFizik\e[39m    | İngilizce  | Fransızca  |'
+    echo -e '| 14.45 - 15.25 | \e[34mBiyoloji\e[39m  | Beden      | \e[35mFizik\e[39m    | İngilizce  | Din        |'
+    echo -e '+-----------------------------------------------------------------------------+'
 }
 
 #Theme
@@ -196,4 +197,5 @@ source "/home/$USER/.config/zsh/k/k.sh"
 source "/home/$USER/.config/zsh/z/z.sh"
 source "/home/$USER/.config/zsh/fzf-z/fzf-z.plugin.zsh"
 
-source /home/tozkoparan/.config/broot/launcher/bash/br
+source "/home/tozkoparan/.config/broot/launcher/bash/br"
+#source promptless.sh
