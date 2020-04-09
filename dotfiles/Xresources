@@ -1,13 +1,16 @@
 !Font
 URxvt.font: xft:UbuntuMono Nerd Font:size=13,\
+            xft:Font Awesome 5 Free:style=Regular:pixelsize=8,\
+            xft:Font Awesome 5 Free:style=Solid:pixelsize=8,\
+            xft:Font Awesome 5 Brands:pixelsize=8,\
             xft:Terminess Powerline:size=13, \
             xft:symbola:size=13,\
             xft:Noto Color Emoji:style=Regular,\
             xft:Unifont,\
-            xft: Liberation Mono:pixelsize=14,\
-            xft: DejaVu Sans Mono,\
-            xft: Symbola:size=5,\
-            xft: Unifont
+            xft:Liberation Mono:pixelsize=14,\
+            xft:DejaVu Sans Mono,\
+            xft:Symbola:size=5,\
+            xft:Unifont
 
 
 URxvt.letterSpace: -1
@@ -27,47 +30,6 @@ URxvt.scrollTtyOutput: false
 URxvt.scrollWithBuffer: true
 URcvt.scrollTtyKeypress: true
 
-!!Colors
-!#define bg    #292d3e
-!#define fg    #bfc7d5
-!#define curs  #bfc7d5
-!#define blk   #292d3e
-!#define bblk  #676e95
-!#define red   #f07178
-!#define grn   #c3e88d
-!#define ylw   #ffcb6b
-!#define blu   #82aaff
-!#define mag   #c792ea
-!#define cyn   #89ddff
-!#define wht   #bfc7d5
-!#define bred  #f07178
-!#define bgrn  #c3e88d
-!#define bylw  #ffcb6b
-!#define bblu  #82aaff
-!#define bmag  #c792ea
-!#define bcyn  #89ddff
-!#define bwht  #959dcb
-!
-!*background:   bg
-!*foreground:   fg
-!*cursorColor:  curs
-!
-!*color0:      blk
-!*color8:      bblk
-!*color1:      red
-!*color9:      bred
-!*color2:      grn
-!*color10:     bgrn
-!*color3:      ylw
-!*color11:     bylw
-!*color4:      blu
-!*color12:     bblu
-!*color5:      mag
-!*color13:     bmag
-!*color6:      cyn
-!*color14:     bcyn
-!*color7:      wht
-!*color15:     bwht
 
 ! special
 *.foreground:   #93a1a1
