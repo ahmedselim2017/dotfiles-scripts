@@ -1,16 +1,7 @@
-!Font
-URxvt.font: xft:UbuntuMono Nerd Font:size=13,\
-            xft:Font Awesome 5 Free:style=Regular:pixelsize=8,\
-            xft:Font Awesome 5 Free:style=Solid:pixelsize=8,\
-            xft:Font Awesome 5 Brands:pixelsize=8,\
-            xft:Terminess Powerline:size=13, \
-            xft:symbola:size=13,\
-            xft:Noto Color Emoji:style=Regular,\
-            xft:Unifont,\
-            xft:Liberation Mono:pixelsize=14,\
-            xft:DejaVu Sans Mono,\
-            xft:Symbola:size=5,\
-            xft:Unifont
+!Fonts
+
+URxvt.font: xft:Hack Nerd Font Mono:style=Regular:size=10,\
+            xft:Symbola:size=12
 
 
 URxvt.letterSpace: -1
