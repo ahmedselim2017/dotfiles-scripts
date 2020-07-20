@@ -1,4 +1,4 @@
-> # DEPRECATED - Use https://github.com/ahmedselim2017/dotfiles
+> # DEPRECATED - New Repo https://github.com/ahmedselim2017/dotfiles
 
 # My Dotfiles And Scripts
 
