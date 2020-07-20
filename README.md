@@ -1,3 +1,5 @@
+> # DEPRECATED - Use https://github.com/ahmedselim2017/dotfiles
+
 # My Dotfiles And Scripts
 
 ## Screenshot:
